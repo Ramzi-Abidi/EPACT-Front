@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 
 const SingleProduct = ({ prod }) => {
   const handleDelete = (id) => {
-    fetch('http://localhost:5000/api/products/'+id, {
+    fetch('http://102.219.178.49:5000/api/products/'+id, {
       method: 'DELETE',
     })
       .then(res => {
