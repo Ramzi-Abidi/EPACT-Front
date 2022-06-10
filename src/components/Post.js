@@ -20,7 +20,7 @@ const Post = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ postContent: textArea, title: textTitle })
         };
-        fetch('http://localhost:5000/post', requestOptions)
+        fetch('http://102.219.178.49:5000/post', requestOptions)
             .then((res) => {
                 return res.json();
             })
