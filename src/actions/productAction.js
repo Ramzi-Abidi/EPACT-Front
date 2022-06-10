@@ -127,7 +127,7 @@ export const saveShippingAddress = (data) => (dispatch) => {
 export const signin = (email, password) => async (dispatch) => {
     dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
     try {
-        const { data } = await Axios.post('/api/users/signin', { email, password });
+        const { data } = await Axios.post('http://102.219.178.49:5000/api/users/signin', { email, password });
         dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
         localStorage.setItem('userInfo', JSON.stringify(data));
     } catch (error) {
@@ -144,7 +144,7 @@ export const signin = (email, password) => async (dispatch) => {
 export const register = (name, email, password) => async (dispatch) => {
     dispatch({ type: USER_REGISTER_REQUEST, payload: { email, password } });
     try {
-        const { data } = await Axios.post('/api/users/register', {
+        const { data } = await Axios.post('http://102.219.178.49:5000/api/users/register', {
             name,
             email,
             password,
@@ -222,7 +222,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         userSignin: { userInfo },
     } = getState();
     try {
-        const { data } = await Axios.put(`/api/users/profile`, user, {
+        const { data } = await Axios.put(`http://102.219.178.49:5000/api/users/profile`, user, {
             headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
