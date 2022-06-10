@@ -14,7 +14,7 @@ export default () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/getAllPosts")
+        fetch("http://102.219.178.49:5000/api/getAllPosts")
             .then((res) => {
                 return res.json();
             })
