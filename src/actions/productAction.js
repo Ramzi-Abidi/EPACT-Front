@@ -37,7 +37,7 @@ export const listProducts = () => async (dispatch) => {
     });
 
     try {
-        const response = await fetch("http://localhost:5000/api/products");
+        const response = await fetch("http://102.219.178.49:5000/api/products");
         const data = await response.json();
         console.log(data);
 
@@ -63,7 +63,7 @@ export const detailsProduct = (productId) => async (dispatch) => {
 
     try {
         console.log(productId);
-        const response = await fetch(`http://localhost:5000/api/products/${productId}`);
+        const response = await fetch(`http://102.219.178.49:5000/api/products/${productId}`);
         const singleProd = await response.json();
         console.log(singleProd);
 
@@ -84,7 +84,7 @@ export const detailsProduct = (productId) => async (dispatch) => {
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
     console.log(productId);
 
-    const response = await fetch(`http://localhost:5000/api/products/${productId}`);
+    const response = await fetch(`http://102.219.178.49:5000/api/products/${productId}`);
     const data = await response.json();
     console.log(data);
 
