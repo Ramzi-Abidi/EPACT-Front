@@ -23,7 +23,7 @@ const Productlist = () => {
 
     }
 
-    fetch("http://localhost:5000/api/products")
+    fetch("http://102.219.178.49:5000/api/products")
       .then((res) => {
         return res.json();
       })
@@ -49,7 +49,7 @@ const Productlist = () => {
 
     console.log(file);
 
-    Axios.post("http://localhost:5000/addProducts", newFormData)
+    Axios.post("http://102.219.178.49:5000/addProducts", newFormData)
       .then((res) => {
         setTextBtn("Créer...");
         if (res) {
@@ -76,11 +76,8 @@ const Productlist = () => {
           <input type="file" filename="product_image" className="box" required onChange={(e) => setFile(e.target.files[0])} />
           <input type="submit" className="btn-prodlist" name="add_product" /* onClick={send} */ value={textBtn} />
         </form>
-
       </div>
-
     </div>
-
   )
 }
 

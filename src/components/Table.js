@@ -71,6 +71,7 @@ function MTable({ orders, loading }) {
                         <TableCell className={classes.tableHeaderCell}>Items Info</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Total Price</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Status</TableCell>
+                        <TableCell className={classes.tableHeaderCell}>Email</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

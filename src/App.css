@@ -51,7 +51,7 @@ body {
         'main'
         'footer';
     grid-template-columns: 1fr;
-    grid-template-rows: 2rem 2fr auto;
+    grid-template-rows: 1.5rem 2fr auto;
     height: 100%;
 }
 header {
