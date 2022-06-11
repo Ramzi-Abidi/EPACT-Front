@@ -21,6 +21,7 @@ import EditProduct from "./components/EditProduct";
 import Footer from './components/Footer';
 import Orders from './components/Orders';
 import Swiper from './components/Swiper';
+import OrderScreen from "./components/OrderScreen" ;
 
 function App() {
 
@@ -122,7 +123,8 @@ function App() {
 
             <Route path="/orders">
               <AnimatedPage>
-                <Orders />
+                <OrderScreen />
+                {/*<Order />*/}
               </AnimatedPage>
             </Route>
 

@@ -17,25 +17,27 @@ const Signup = (props) => {
   const { userInfo, loading, error } = userRegister;
   const dispatch = useDispatch();
   const history = useHistory();
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(password!==confirmPassword)
+    if (password !== confirmPassword)
       alert("confirm password are not matched");
     else
-       dispatch(register(name,email, password));
+      dispatch(register(name, email, password));
   };
 
-  useEffect(()=>{
-    if(userInfo)
+  useEffect(() => {
+    if (userInfo)
       history.push("/");
-  },[userInfo]);
+
+  }, [userInfo]);
 
   return (
     <div className='holder' >
-          <div class="background-container" style={{background:"#f1f1f1f1"}}>
+      <div class="background-container" style={{ background: "#f1f1f1f1" }}>
         {/*     <div class="bg-1"></div>
             <div class="bg-2"></div> */}
-        </div>
+      </div>
 
       <span class="big-circle"></span>
       <div class="form" style={{ minHeight: "288px" }} onSubmit={handleSubmit}>
@@ -100,12 +102,12 @@ const Signup = (props) => {
               <span>Confirm Password</span>
             </div>
 
-          <div className='input-container1'>
-            <input type="submit" value="Send" class="btn" />
-            <div>
-              Vous avez déjà un compte ? <Link to="/signin"> Sign In </Link>
+            <div className='input-container1'>
+              <input type="submit" value="Send" class="btn" />
+              <div>
+                Vous avez déjà un compte ? <Link to="/signin"> Sign In </Link>
+              </div>
             </div>
-          </div>
 
           </form>
         </div>

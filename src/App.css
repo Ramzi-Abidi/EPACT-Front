@@ -67,7 +67,12 @@ main {
   margin:1rem 0 0 0 ;
   padding:1rem 0;
 }
-/* Common */
+th {
+  font-size: 2rem !important;
+}
+td,td h6,td p {
+  font-size: 1.3rem !important;
+}
 h1 {
   font-size: 1.8rem;
 }
@@ -891,6 +896,11 @@ i.fa-solid {
   border-radius: 5px;
   transition: .3s all ease;
 }
+
+
+.MuiToolbar-root p, .MuiToolbar-root div{
+  font-size: 1.3rem ;
+}
 .text-container a:hover{
   background-color: transparent;
   color: black;
@@ -1144,9 +1154,9 @@ i.fa-solid {
     font-size: 13px;
   }
 
-  .site-desc {
+/*   .site-desc {
     height: 640px;
-  }
+  } */
   .links:hover {
     color: var(--second-color);
   }
