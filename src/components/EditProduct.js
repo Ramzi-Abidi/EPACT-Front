@@ -58,7 +58,7 @@ const EditProduct = (props) => {
             history.push("/signin");
         }
 
-        fetch("http://localhost:5000/api/products/" + id)
+        fetch("http://102.219.178.49:5000/api/products/" + id)
             .then((res) => {
 
                 //console.log(res.json());

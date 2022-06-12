@@ -48,7 +48,7 @@ const ProductScreen = (props) => {
                 <Link to="/" className='back-to-home' style={{ marginLeft: "20px", fontWeight: "bold", color: "#333" }}> back to home</Link>
                 <div className="row top" style={{margin:"0 3.5rem"}}>
                   <div className="col-2">
-                    <img src={`http://localhost:5000/${product.image}`} className="large" alt={product.name} />
+                    <img src={`http://102.219.178.49:5000/${product.image}`} className="large" alt={product.name} />
                   </div>
                   <div className="col-1 ">
                     <div className='card card-body'>
