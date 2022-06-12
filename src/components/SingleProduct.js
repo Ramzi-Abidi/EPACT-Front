@@ -7,7 +7,7 @@ const SingleProduct = ({ prod, setProducts,products  }) => {
   //let arr = [];
 
   const handleDelete = (id) => {
-    fetch('http://localhost:5000/api/products/' + id, {
+    fetch('http://102.219.178.49:5000/api/products/' + id, {
       method: 'DELETE',
     })
       .then(res => {
@@ -33,7 +33,7 @@ const SingleProduct = ({ prod, setProducts,products  }) => {
     <div>
       <div className="card">
         <Link to={`/product/${prod._id}`}>
-          <img className="medium" src={`http://localhost:5000/${prod.image}`} alt="product" />
+          <img className="medium" src={`http://102.219.178.49:5000/${prod.image}`} alt="product" />
         </Link>
         <div className="card-body">
           <Link to={`/product/${prod._id}`}>

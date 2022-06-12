@@ -43,7 +43,7 @@ const PlaceOrder = () => {
   useEffect(() => {
     if (success) {
       swal("Envoyée!", "La commande est envoyée avec succès", "success");
-      history.push(`/order/${order._id}`);
+      //history.push(`/order/${order._id}`);
       dispatch({ type: ORDER_CREATE_RESET });
     }
   }, [dispatch, order, history, success]);
@@ -89,7 +89,7 @@ const PlaceOrder = () => {
                       <div className="row">
                         <div>
                           <img
-                            src={`../images/${item.image}`}
+                            src={`http://102.219.178.49:5000/${item.image}`}
                             alt={item.name}
                             className="small"
                           ></img>

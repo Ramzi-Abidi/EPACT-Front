@@ -176,7 +176,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
         const {
             userSignin: { userInfo },
         } = getState();
-        const { data } = await Axios.post('/api/orders', order, {
+        const { data } = await Axios.post('http://102.219.178.49:5000/api/orders', order, {
             headers: {
                 Authorization: `Bearer ${userInfo.token}`,
             },
@@ -202,7 +202,7 @@ export const detailsUser = (userId) => async (dispatch, getState) => {
         userSignin: { userInfo },
     } = getState();
     try {
-        const { data } = await Axios.get(`/api/users/${userId}`, {
+        const { data } = await Axios.get(`http://102.219.178.49:5000/api/users/${userId}`, {
             headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         dispatch({ type: USER_DETAILS_SUCCESS, payload: data });

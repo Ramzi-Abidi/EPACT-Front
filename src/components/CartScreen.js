@@ -48,7 +48,7 @@ const CartScreen = (props) => {
                                     <div className="row">
                                         <div>
                                             <img
-                                                src={`../images/${item.image}`}
+                                                src={`http://102.219.178.49:5000/${item.image}`}
                                                 alt={item.name}
                                                 className="small"
                                             ></img>
