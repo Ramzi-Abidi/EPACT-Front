@@ -68,10 +68,18 @@ main {
   padding:1rem 0;
 }
 th {
-  font-size: 2rem !important;
+  font-size: 1.7rem !important;
 }
-td,td h6,td p {
+.MuiGrid-root p:first-child{
+  color: rgb(32, 32, 32) !important;
+}
+.MuiGrid-root > p {
+  font-size: 1.25rem !important;
+  color: #009688 !important;
+}
+td,td h6,td {
   font-size: 1.3rem !important;
+  color:#555555 !important;
 }
 h1 {
   font-size: 1.8rem;
@@ -351,7 +359,11 @@ ul {
 .content div {
   margin: 0 10px;
 }
-
+.MuiPaper-elevation1 {
+  box-shadow: 1px 4px 3px 2px rgb(101 101 101 / 20%),
+  1px 3px 2px 0px rgb(233 233 233),
+  0px 1px 2px 2px rgb(65 65 65 / 12%) !important;
+}
 .img-container img {
   width:100%;
   cursor: pointer;
@@ -363,8 +375,7 @@ ul {
 
 .site-desc {
   /*width: 250px;*/
-  
-  height: 570px;
+  height: 589px;
 }
 
 .third-sec {
@@ -1009,6 +1020,51 @@ i.fa-solid {
   margin:1rem ;
   padding:2rem ;
 }
+
+/**/
+
+
+.search {
+  width: 60%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  font-size: 16px;
+  width: 100%;
+  border: 3px solid #818181;
+  padding: 8px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #131313;
+}
+
+.searchTerm:focus{
+  color: #131313;
+}
+
+.searchButton {
+  width: 40px;
+  border: 1px solid #818181;
+  background: #818181;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+  cursor: auto;
+}
+
+/*Resize the 
+to see the search bar change!*/
+.wrapp{
+  width: 30%; 
+  width: 38%;
+  margin-left: 2rem;
+  margin-top: 5rem;
+}
+/**/
 @media (max-width:992px) {
   .links {
     color: #fff;

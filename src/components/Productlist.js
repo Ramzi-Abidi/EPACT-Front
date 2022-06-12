@@ -49,7 +49,7 @@ const Productlist = () => {
 
     console.log(file);
 
-    Axios.post("http://102.219.178.49:5000/addProducts", newFormData)
+    Axios.post("http://localhost:5000/addProducts", newFormData)
       .then((res) => {
         setTextBtn("Créer...");
         if (res) {

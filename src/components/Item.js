@@ -31,7 +31,11 @@ export default () => {
 
     //delete post :
     const handleDelete = (id) => {
-        console.log(id);
+        let arr = posts.filter((post) => {
+            return post._id !== id;
+        });
+        setPosts(arr);
+        //        console.log(id);
 
         fetch('http://102.219.178.49:5000/api/posts/' + id, {
             method: 'DELETE',

@@ -3,9 +3,11 @@ import { AiOutlineEdit, AiTwotoneDelete } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
-const SingleProduct = ({ prod }) => {
+const SingleProduct = ({ prod, setProducts,products  }) => {
+  //let arr = [];
+
   const handleDelete = (id) => {
-    fetch('http://102.219.178.49:5000/api/products/' + id, {
+    fetch('http://localhost:5000/api/products/' + id, {
       method: 'DELETE',
     })
       .then(res => {
@@ -14,6 +16,9 @@ const SingleProduct = ({ prod }) => {
       .then(data => {
         if (data) {
           console.log(data);
+          let arr = products.filter((prod) => prod._id !== id);
+          setProducts(arr);
+
           swal("done!", "Produit supprimer avec succée", "success");
         }
       })
@@ -22,7 +27,7 @@ const SingleProduct = ({ prod }) => {
         swal("oops!", err, "warning");
       });
   }
-  let API_ENDPOINT = process.env.API_ENDPOINT;
+  //let API_ENDPOINT = process.env.API_ENDPOINT;
 
   return (
     <div>

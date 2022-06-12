@@ -9,18 +9,22 @@ import MessageBox from './MessageBox';
 import SingleProduct from './SingleProduct';
 
 
-export default ({ products }) => {
+export default ({ products, setProducts }) => {
+    //const [newProducts, setNewProducts] = useState(null);
+
 
     return (
-        <div className='product-holder'>
-            {
-                products.map((prod) => {
-                    return (
-                        <SingleProduct prod={prod} />
-                    )
-                })
-            }
-            {/*    <Swiper style={{ marginTop: "6rem" }} spaceBetween={30} slidesPerView={3}>
+        <>
+            <div className='product-holder'>
+                {
+                    products.map((prod) => {
+                        return (
+                            <SingleProduct prod={prod} setProducts={setProducts} products={products}  />
+                        )
+                    })
+
+                }
+                {/*    <Swiper style={{ marginTop: "6rem" }} spaceBetween={30} slidesPerView={3}>
                 {
                     products.map((prod) => {
                         return (
@@ -30,13 +34,13 @@ export default ({ products }) => {
                         
                                 
                              </SwiperSlide> 
-                            )
+                             )
+                             
+                            })
+                        }
                         
-                    })
-                }
-
-                {products.length === 0 && <MessageBox> Aucun produit cliquez ici pour ajouter des nouveaux <Link to="productlist" style={{ margin: "0 1.5rem", fontWeight: "bold", textDecoration: "underline" }}> Ajouter </Link> </MessageBox>}
-            </Swiper> */}
-        </div>
+                    </Swiper> */}
+            </div>
+        </>
     );
 };

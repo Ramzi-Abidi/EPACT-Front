@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProducts } from '../actions/productAction';
 import LoadingBox from './LoadingBox';
@@ -8,13 +8,15 @@ import Item from "./Item";
 import ProductsItem from './ProductsItem';
 
 const Home = () => {
-	const productList = useSelector((state) => state.productList);
+	/* const productList = useSelector((state) => state.productList); */
 
-	const { loading, error, products } = productList;
+/* 	const { loading, error, products } = productList; */
 
-	console.log(products) ;
-
-	const dispatch = useDispatch();
+	/* console.log(products) ; */
+	const [products, setProducts] = useState([]);
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState();
+/* 	const dispatch = useDispatch(); */
 
 	const history = useHistory();
 
@@ -27,8 +29,24 @@ const Home = () => {
 	}
 
 	useEffect(() => {
-		dispatch(listProducts());
-	}, [dispatch]);
+		//dispatch(listProducts());
+		fetch("http://102.219.178.49:5000/api/products")
+			.then((res)=>{
+				setLoading(true) ;
+				return res.json() ;
+			})
+			.then((data)=>{
+				setLoading(false) ;
+				console.log(data) ;
+				setProducts(data) ;
+			})
+			.catch((err)=>{
+				setLoading(false) ;
+				setError(err) ;
+				console.log(err) ;
+			})
+
+	}, []);
 
 	return (
 		<>
@@ -68,10 +86,10 @@ const Home = () => {
 							:
 							error ? <MessageBox variant={"danger"}> {error} </MessageBox>
 								:
-								<ProductsItem products={products} />
+								<ProductsItem products={products} setProducts={setProducts} />
 					}
 
-					{!products || products.length===0 && <MessageBox>Aucun Produit </MessageBox>}
+					{!products || products.length===0 && <MessageBox>Aucun produit pour le moment</MessageBox>}
 				</section>
 			</div>
 
