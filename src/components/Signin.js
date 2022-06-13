@@ -66,7 +66,7 @@ const Signin = (props) => {
           <form autoComplete="on" style={{ position: "relative" , height:"100%"}}>
             {loading && <LoadingBox></LoadingBox>}
             {error && <MessageBox variant={"danger"}> {error} </MessageBox>}
-            <h3 class="title">Sign in</h3>
+            <h3 class="title" style={{color:"#fff"}}>Sign in</h3>
 
             <div class="input-container">
               <input type="email" name="email" class="input" placeholder='email' onChange={(e) => setEmail(e.target.value)} required />
@@ -77,7 +77,7 @@ const Signin = (props) => {
               <span>password</span>
             </div>
             <div className='input-container1' style={{bottom:"9rem" }}>
-              <input type="submit" value="Login" class="btn" style={{ width: "100%" }} />
+              <input type="submit" value="Login" class="btn btn-outline-primary signup" style={{width:"11rem",height:"40px"}} />
               <div>
                 Nouveau client ? <Link to="/signup"> Créez un nouveau compte </Link>
               </div>

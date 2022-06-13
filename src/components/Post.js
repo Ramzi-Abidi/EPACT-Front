@@ -1,17 +1,30 @@
 import React, { useState } from 'react'
 import "./post.css";
-import swal from "sweetalert" ;
+import swal from "sweetalert";
+import { useHistory } from 'react-router-dom';
 
 const Post = () => {
     const [textArea, setTextArea] = useState("");
     const [textTitle, setTextTitle] = useState("");
     const [textBtn, setTextBtn] = useState("Publier");
-    
+
+    let history = useHistory();
+    const scrollToPosts = () => {
+        const postsSection = document.querySelector(".news").offsetTop;
+        console.log(postsSection);
+        setTimeout(() => {
+            window.scrollTo({
+                left:0,
+                top:postsSection
+            });
+        }, 800);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        setTextBtn("Ajout d'un poste...") ;
-        
+
+        setTextBtn("Ajout d'un poste...");
+
         console.log(textArea);
 
         //POST request to the server to store data to the DB :
@@ -26,17 +39,23 @@ const Post = () => {
             })
             .then((data) => {
                 console.log(data);
-                if(data) {
-                    setTimeout(() => {
-                        swal("done!", "publier avec succès", "success");
-                        setTextBtn("Publier") ;
-                    }, 1500);
+                if (data) {
+                    setTextBtn("Publier");
+                    setTextArea("");
+                    setTextTitle("");
+                    swal("done!", "publier avec succès", "success").then(() => {
+                        history.push("/");
+                        scrollToPosts();
+                    });
                 }
             })
             .catch((err) => {
                 console.log(err);
             })
 
+        //history.push("/") ;
+
+        //scroll to "les dernieres actualités" sections
     }
     return (
         <div className="body">
@@ -50,19 +69,11 @@ const Post = () => {
                             <div className="contentPost">
                                 <img src="fb-icons/logo.png" alt="logo" />
                                 <div className="details">
-                                    <p>Admin</p>
-                                    <div className="privacy">
-                                        <i className="fas fa-user-friends"></i>
-                                    
-                                        <i className="fas fa-caret-down"></i>
-                                    </div>
+                                    <p> <b>Admin</b></p>
                                 </div>
                             </div>
                             <textArea onChange={(e) => setTextTitle(e.target.value)} value={textTitle} className="options" placeholder='titre du publication' required style={{ height: "40px" }} />
                             <textarea onChange={(e) => setTextArea(e.target.value)} value={textArea} placeholder="Ecrivez quelque chose" spellcheck="false" required className="options"></textarea>
-                     
-
-                            {/*                             <button>Post</button> */}
                             <input type="submit" value={textBtn} className='postButton' />
                         </form>
                     </section>

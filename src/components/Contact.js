@@ -70,16 +70,16 @@ const Contact = () => {
 
           <div class="info">
             <div className="information">
-              <p>Email : <b>siwarbenkraeim1@gmail.com</b></p>
+              <p><strong style={{marginRight:"2.4rem"}}> Email : </strong> <a href="mailto:siwarbenkraeim1@gmail.com">siwarbenkraeim1@gmail.com</a></p>
             </div>
             <div className="information">
               <img src="img/phone.png" class="icon" alt="" />
-              <p>Num tel : <b> 52070045</b></p>
+              <p> <strong style={{marginRight:"1rem"}}>Num tel : </strong><b> 52070045</b></p>
             </div>
           </div>
 
           <div class="social-media">
-            <p>Contactez-nous</p>
+            <p >Contactez-nous</p>
             <div class="social-icons">
               <a href="https://www.facebook.com/EPACTTunsie/" target={"_blank"}>
                 <i class="fab fa-facebook-f"></i>
@@ -96,7 +96,7 @@ const Contact = () => {
           <span class="circle two"></span>
 
           <form action="" onSubmit={handleSubmit}>
-            <h3 class="title">Contactez-nous</h3>
+            <h3 class="title" style={{color:'#fff'}}>Contactez-nous</h3>
             <div class="input-container">
               <input type="text" name="name" className="input" placeholder='Nom et prénom' value={userName} onChange={(e) => setUserName(e.target.value)} required />
 
@@ -113,7 +113,7 @@ const Contact = () => {
               <textarea name="message" className="input" placeholder='Votre Message' value={message} onChange={(e) => setMessage(e.target.value)} required></textarea>
 
             </div>
-            <input type="submit" value="Envoyer" className="btn" style={{ width: "90%" }} />
+            <input type="submit" value="Envoyer" className="btn btn-outline-primary contact-outline" style={{ width: "90%" }} />
           </form>
         </div>
       </div>

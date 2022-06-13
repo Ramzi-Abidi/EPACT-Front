@@ -82,7 +82,7 @@ const Signup = (props) => {
           <form autoComplete="on">
             {loading && <LoadingBox></LoadingBox>}
             {error && <MessageBox variant={"danger"}> {error} </MessageBox>}
-            <h3 class="title">Sign up</h3>
+            <h3 class="title" style={{color:"#fff"}}>Sign up</h3>
 
             <div class="input-container">
               <input type="text" name="name" class="input" placeholder='name' onChange={(e) => setName(e.target.value)} />
@@ -103,7 +103,7 @@ const Signup = (props) => {
             </div>
 
             <div className='input-container1'>
-              <input type="submit" value="Send" class="btn" />
+              <input type="submit" value="Send" class="btn btn-outline-primary signup" style={{width:"11rem",height:"40px"}}/>
               <div>
                 Vous avez déjà un compte ? <Link to="/signin"> Sign In </Link>
               </div>

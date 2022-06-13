@@ -8,7 +8,7 @@ import LoadingBox from './LoadingBox';
 import MessageBox from './MessageBox';
 
 const ProductScreen = (props) => {
-  const history= useHistory();
+  const history = useHistory();
 
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
@@ -27,14 +27,14 @@ const ProductScreen = (props) => {
   if (!product)
     return <div>Il n'y a pas ce produit </div>
 
-    const handleAddToCart = () => {
-      if(localStorage.getItem("userInfo"))
-        history.push(`/cart/${props.match.params.id}?qty=${qty}`);
-      //history.push(`/cart/`);
-      else {
-        props.history.push("/signin");
-      }
-    };
+  const handleAddToCart = () => {
+    if (localStorage.getItem("userInfo"))
+      history.push(`/cart/${props.match.params.id}?qty=${qty}`);
+    //history.push(`/cart/`);
+    else {
+      props.history.push("/signin");
+    }
+  };
 
   return (
     <>
@@ -45,8 +45,12 @@ const ProductScreen = (props) => {
             :
             (
               <>
-                <Link to="/" className='back-to-home' style={{ marginLeft: "20px", fontWeight: "bold", color: "#333" }}> back to home</Link>
-                <div className="row top" style={{margin:"0 3.5rem"}}>
+                <div>
+                  <Link to="/" className='back-to-home' style={{ marginLeft: "20px", fontWeight: "bold", color: "#333" }}> back to home</Link>
+                  <button type="button" class="btn btn-primary" onClick={() => history.push("/")}>Retour</button>
+                </div>
+
+                <div className="row top" style={{ margin: "4rem 3.5rem" }}>
                   <div className="col-2">
                     <img src={`http://102.219.178.49:5000/${product.image}`} className="large" alt={product.name} />
                   </div>
@@ -68,22 +72,25 @@ const ProductScreen = (props) => {
                         <li>
                           <div className='content'>
                             <h4 className='title2'>Prix : </h4>
-                            <div className='price'> {product.price} dt</div>
+                            <div> <h3> {product.price} dt  </h3> </div>
                           </div>
                         </li>
                         <li>
                           <div className='content'>
-                            <h4>Qty:</h4>
-                            <div className='selectContainer'>
-                              <select value={qty} onChange={e => setQty(e.target.value)}>
-                                <option key={1} value={1}> 1 </option>
-                                <option key={2} value={2}> 2 </option>
-                                <option key={3} value={3}> 3 </option>
-                              </select>
+                            <h4 style={{ margin: "1.7rem 0" }}>Qty:</h4>
+                            <div className=''>
+                              <div class="form-group">
+                                <select class="form-select" style={{ margin: "1.7rem 0" }} id="exampleSelect1">
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+
+                                </select>
+                              </div>
                             </div>
                           </div>
                           <li className='btn-container'>
-                            <button className='btn primary block' onClick={handleAddToCart}>
+                            <button className='btn btn-warning' onClick={handleAddToCart}>
                               Ajouter au panier
                             </button>
                           </li>

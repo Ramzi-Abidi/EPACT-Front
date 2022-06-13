@@ -79,53 +79,40 @@ const EditProduct = (props) => {
 
 
     return (
-        <div className="our-container" style={{ outline: "none", border: "none" }}>
+        /*         <div className="our-container" style={{ outline: "none", border: "none" }}>
+                    <div className="admin-product-form-container">
+                        <form method="POST" onSubmit={send} encType="multipart/form-data">
+                            <h3>Editer le produit</h3>
+                            <input type="text" placeholder="le nom du produit" className="box" value={nameProd} required onChange={(e) => setNameProd(e.target.value)} />
+                            <input type="number" placeholder="le prix de produit " className="box" value={price} required onChange={(e) => setPrice(e.target.value)} />
+                            <input type="file" filename="product_image" className="box" required onChange={(e) => setFile(e.target.files[0])} />
+                            <input type="submit" className="btn-prodlist" name="add_product" value={textBtn} />
+                        </form>
+                    </div>
+                </div> */
 
-            <div className="admin-product-form-container">
+        <form style={{ padding: "2.3rem 3.5rem", zIndex: 10, overflow: "hidden", position: "relative", margin: "1rem 3rem" }} onSubmit={send} encType="multipart/form-data" >
+            <div className="container">
+                <fieldset style={{ margin: "2rem auto", width: "85%", padding: "2.2rem 0.5rem" }}>
+                    <legend>Legend</legend>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="form-label mt-4">Nom du produit</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder='Nom : ' value={nameProd} onChange={(e) => setNameProd(e.target.value)} />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" class="form-label mt-4">Prix du produit </label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Prix :" value={price} required onChange={(e) => setPrice(e.target.value)} />
+                    </div>
 
-                <form method="POST" onSubmit={send} encType="multipart/form-data">
-                    <h3>Editer le produit</h3>
-
-                    <input type="text" placeholder="le nom du produit" className="box" value={nameProd} required onChange={(e) => setNameProd(e.target.value)} />
-                    <input type="number" placeholder="le prix de produit " className="box" value={price} required onChange={(e) => setPrice(e.target.value)} />
-                    <input type="file" filename="product_image" className="box" required onChange={(e) => setFile(e.target.files[0])} />
-
-                    <input type="submit" className="btn-prodlist" name="add_product" /* onClick={send} */ value={textBtn} />
-                </form>
-
+                    <div class="form-group">
+                        <label for="formFile" class="form-label mt-4">Image du produit</label>
+                        <input class="form-control" type="file" filename="product_image" required onChange={(e) => setFile(e.target.files[0])} />
+                    </div>
+                    <button type="submit" class="btn btn-primary" style={{ backgroundColor: "#2780e3 !important", width: "9rem", height: "3rem", marginTop: "1.5rem" }} value={textBtn} >Submit</button>
+                </fieldset>
             </div>
 
-            {/*  <div className="product-display">
-                <table className="product-display-table">
-                    <thead>
-                        <tr>
-                            <th>product image</th>
-                            <th>product name</th>
-                            <th>product price</th>
-                            <th>action</th>
-                        </tr>
-                    </thead>
-                    {
-                        data.map((prod) => {
-                            return (
-                                <tr class="productsHolder">
-                                    <td><img src="${prod.img}" width="30" alt="${prod.name}" /></td>
-                                    <td> {prod.name} </td>
-                                    <td> {prod.price} TND</td>
-                                    <td>
-                                        <button className="btn-prodlist" style={{ outline: "0", border: "0" }}> <i className="fas fa-edit"></i> edit </button>
-                                        <button className="btn-prodlist" style={{ outline: "0", border: "0" }}> <i classname="fas fa-trash"></i> delete </button>
-                                    </td>
-                                </tr>
-                            )
-                        })
-                    }
-
-                </table>
-            </div> */}
-
-        </div>
-
+        </form>
     )
 }
 

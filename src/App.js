@@ -1,3 +1,6 @@
+import 'bootswatch/dist/slate/bootstrap.min.css';
+import 'bootswatch/dist/cosmo/bootstrap.css';
+
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/Header';
@@ -22,6 +25,7 @@ import Footer from './components/Footer';
 import Orders from './components/Orders';
 import Swiper from './components/Swiper';
 import OrderScreen from "./components/OrderScreen" ;
+import Tojrab from "./components/Tojrab";
 
 function App() {
 
@@ -46,6 +50,10 @@ function App() {
             
             <Route path="/swiper">
                 <Swiper />
+            </Route>
+
+            <Route path="/tojrab">
+                <Tojrab />
             </Route>
 
             {/*         <Route path="/" component={Home}>

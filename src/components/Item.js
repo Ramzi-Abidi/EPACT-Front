@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 export default () => {
     const [posts, setPosts] = useState([]);
-
+    
     useEffect(() => {
         fetch("http://102.219.178.49:5000/api/getAllPosts")
             .then((res) => {
@@ -67,43 +67,69 @@ export default () => {
             {
                 posts.map((post) => {
                     return (
+                        /*  <SwiperSlide>
+                             <div id="wrappers" key={post._id}>
+                                 <div className="cf">
+                                     <img src="http://2016.igem.org/wiki/images/e/e0/Uclascrolldown.png" class="arrow" />
+                                     <h1 className="name">
+                                         <li>Admin</li>
+                                     </h1>
+                                     <p className="date">2 hr ago</p>
+                                 </div>
+                                 <p className="status">{post.postContent}</p>
+                                 <div className="action">
+                                     <div className="comment">
+                                         <li style={{ cursor: "pointer" }}>
+                                             <AiOutlineComment />
+                                             <p>Comment</p>
+                                         </li>
+                                     </div>
+                                     {localStorage.getItem("userInfo") && JSON.parse(localStorage.getItem("userInfo")).isAdmin &&
+                                         <>
+                                             <div class="share">
+                                                 <Link to={`posts?${post._id}`}>
+                                                     <AiOutlineEdit style={{ fontSize: "20px", position: "relative", top: "4px" }} />
+                                                 </Link>
+                                             </div>
+ 
+                                             <div className="share">
+                                                 <Link to="#">
+                                                     <AiTwotoneDelete style={{ fontSize: "20px", color: "red", position: "relative", top: "4px" }} onClick={() => handleDelete(post._id)} />
+                                                 </Link>
+                                             </div>
+                                         </>
+                                     }
+ 
+                                 </div>
+ 
+                             </div>
+ 
+                         </SwiperSlide> */
                         <SwiperSlide>
-                            <div id="wrappers" key={post._id}>
-                                <div className="cf">
-                                    <img src="http://2016.igem.org/wiki/images/e/e0/Uclascrolldown.png" class="arrow" />
-                                    <h1 className="name">
-                                        <li>Admin</li>
-                                    </h1>
-                                    <p className="date">2 hr ago</p>
+                            <div class="card border-primary mb-3" style={{ "maxWidth": "48rem" }} key={post._id} >
+                                <div class="card-header" style={{ padding: "1.5rem" }}><b> Admin</b> </div>
+                                {/*  <div className="cf">
+                                     <img src="http://2016.igem.org/wiki/images/e/e0/Uclascrolldown.png" class="arrow" />
+                                     <h1 className="name">
+                                         <li>Admin</li>
+                                     </h1>
+                                     <p className="date">2 hr ago</p>
+                                 </div> */}
+                                <div class="card-body">
+                                    <h4 class="card-title"> <b> {post.title} </b> </h4>
+                                    <p class="card-text" style={{ marginTop: "1rem" }}> {post.postContent}</p>
                                 </div>
-                                <p className="status">{post.postContent}</p>
-                                <div className="action">
-                                    <div className="comment">
-                                        <li style={{ cursor: "pointer" }}>
-                                            <AiOutlineComment />
-                                            <p>Comment</p>
-                                        </li>
-                                    </div>
-                                    {localStorage.getItem("userInfo") && JSON.parse(localStorage.getItem("userInfo")).isAdmin &&
+                                <div style={{ margin: "2rem 1rem" }}>
+                                    <button type="button" class="btn btn-outline-primary" style={{ marginRight: ".5rem", width: "10rem", height: "3rem" }}>Commenter</button>
+                                    {
+                                        localStorage.getItem("userInfo") && JSON.parse(localStorage.getItem("userInfo")).isAdmin &&
                                         <>
-                                            <div class="share">
-                                                <Link to={`posts?${post._id}`}>
-                                                    <AiOutlineEdit style={{ fontSize: "20px", position: "relative", top: "4px" }} />
-                                                </Link>
-                                            </div>
-
-                                            <div className="share">
-                                                <Link to="#">
-                                                    <AiTwotoneDelete style={{ fontSize: "20px", color: "red", position: "relative", top: "4px" }} onClick={() => handleDelete(post._id)} />
-                                                </Link>
-                                            </div>
+                                            <button type="button" class="btn btn-danger" style={{ width: "10rem", height: "3rem" }} onClick={() => handleDelete(post._id)} >Delete</button>
                                         </>
                                     }
 
                                 </div>
-
                             </div>
-
                         </SwiperSlide>
                     )
                 })

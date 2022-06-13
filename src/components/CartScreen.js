@@ -9,11 +9,11 @@ import MessageBox from './MessageBox';
 
 const CartScreen = (props) => {
     const qty = props.location.search
-    ? Number(props.location.search.split('=')[1])
-    : 1;
+        ? Number(props.location.search.split('=')[1])
+        : 1;
 
     const cart = useSelector((state) => state.cart);
-    const history = useHistory() ;
+    const history = useHistory();
 
     const { cartItems } = cart;
     const dispatch = useDispatch();
@@ -33,13 +33,13 @@ const CartScreen = (props) => {
     };
 
     return (
-        <div style={{marginTop:"5.5rem", height:"60vh", padding:"0 3rem"}}>
-            <div className="row top" style={{marginTop:"9rem"}}>
+        <div style={{ marginTop: "5.5rem", height: "60vh", padding: "0 3rem" }}>
+            <div className="row top" style={{ marginTop: "9rem" }}>
                 <div className="col-2">
-                    <h1 style={{marginBottom:"1.5rem"}}>Shopping Cart</h1>
+                    <h1 style={{ marginBottom: "1.5rem" }}>Shopping Cart</h1>
                     {cartItems.length === 0 ? (
                         <MessageBox>
-                            Cart is empty. <Link to="/">Go Shopping</Link>
+                            Cart is empty. <Link to="/" style={{color:"#2780e3"}}>Go Shopping</Link>
                         </MessageBox>
                     ) : (
                         <ul>
@@ -53,11 +53,11 @@ const CartScreen = (props) => {
                                                 className="small"
                                             ></img>
                                         </div>
-                                        <div className="min-30">
+                                        <div className="">
                                             <Link to={`/product/${item.product}`}>{item.name}</Link>
                                         </div>
                                         <div>
-                                            <select
+                                            {/*<select
                                                 value={item.qty}
                                                 onChange={(e) =>
                                                     dispatch(
@@ -65,18 +65,30 @@ const CartScreen = (props) => {
                                                     )
                                                 }
                                             >
-
                                                 <option value={1}>1</option>
                                                 <option value={2}>2</option>
                                                 <option value={3}>3</option>
-                                            </select>
+                                            </select> */}
+                                            <div class="form-group">
+                                                <select class="form-select"
+                                                    value={item.qty}
+                                                    onChange={(e) =>
+                                                        dispatch(
+                                                            addToCart(item.product, Number(e.target.value))
+                                                        )
+                                                    }>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         {/* <div>{item.price}dt</div> */}
                                         <div>
                                             <button
-                                            style={{background:"#ff5722" , margin:"0.5rem", width:"60px", height:"30px"}}
+                                                style={{ background: "#ff5722", margin: "0.5rem", width: "60px", height: "30px",color:"#fff" }}
                                                 type="button"
-                                                className='btn'
+                                                className='btn btn-warning'
                                                 onClick={() => removeFromCartHandler(item.product)}
                                             >
                                                 Delete
@@ -91,30 +103,26 @@ const CartScreen = (props) => {
                 <div className="col-1">
                     <div className="card card-body">
                         <ul>
-                            <li>
-                                <h2>
-                                    Subtotal ({cartItems.reduce((a, c) => a + Number(c.qty), 0)} produits) : 
-                                    {
-                                        cartItems.reduce((a, c) => Number(a) + Number(c.price) * Number(c.qty), 0)
-                                    }
-                                    dt
-                                </h2>
-                            </li>
-                            <li>
-                                <button
-                                    type="button"
-                                    onClick={checkoutHandler}
-                                    className="primary block btn"
-                                    disabled={cartItems.length === 0}
-                                >
-                                    Proceed to Checkout
-                                </button>
-                            </li>
+                            <h2>
+                                Subtotal ({cartItems.reduce((a, c) => a + Number(c.qty), 0)} produits) :
+                                {
+                                    cartItems.reduce((a, c) => Number(a) + Number(c.price) * Number(c.qty), 0)
+                                }
+                                dt
+                            </h2>
+                            <button
+                                type="button"
+                                onClick={checkoutHandler}
+                                className="btn btn-outline-warning"
+                                disabled={cartItems.length === 0}
+                            >
+                                Proceed to Checkout
+                            </button>
                         </ul>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     )
 }

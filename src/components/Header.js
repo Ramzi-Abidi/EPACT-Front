@@ -63,7 +63,7 @@ const Header = ({ userInfo }) => {
           {
             userInfo && userInfo.isAdmin &&
             <Link to="#admin" className='user-container'>
-              <FaUserCircle style={{ position: "relative", top: "3px", marginRight: "3.7px" }} /> Admin
+              <FaUserCircle style={{ position: "relative", top: "-1.5px", marginRight: "3.7px" }} /> Admin
               <i className="fa fa-caret-down"></i>
             </Link>
 
@@ -142,7 +142,7 @@ const Header = ({ userInfo }) => {
                 <li>
                   <Link to="/profile" style={{ color: "#FFF", fontSize: "13px" }}>User Profile</Link>
                 </li>
-                <li style={{ marginTop: "1rem" }}>
+                <li >
                   <Link to="#" onClick={signoutHandler} style={{ color: "#FFF", fontSize: "13px", marginTop: "15px" }} >
                     Sign Out
                   </Link>
@@ -166,7 +166,7 @@ const Header = ({ userInfo }) => {
         {userInfo && userInfo.isAdmin && (
           <div className="dropdown">
             <Link to="#admin" className='user-container'>
-              <FaUserCircle style={{ position: "relative", top: "3px", marginRight: "3.7px" }} /> Admin
+              <FaUserCircle style={{ position: "relative", top: "-1px", marginRight: "3.7px" }} /> Admin
               <i className="fa fa-caret-down"></i>
             </Link>
             <ul className="dropdown-content">
