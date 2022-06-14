@@ -6,10 +6,7 @@ const Apropos = () => {
   return (
     <div class="wrapper">
 
-      {/*colorful background */}
-      <div class="background-container" style={{ background: "rgb(247 247 247 / 95%)" }}>
-        {/*        <div class="bg-1"></div>
-        <div class="bg-2"></div> */}
+      <div class="background-container" style={{ background: "rgb(251 251 251 / 95%)", minHeight:"100vh" }}>
       </div>
 
       <div class="about-container">

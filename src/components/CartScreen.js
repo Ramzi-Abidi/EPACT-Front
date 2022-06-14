@@ -53,7 +53,7 @@ const CartScreen = (props) => {
                                                 className="small"
                                             ></img>
                                         </div>
-                                        <div className="">
+                                        <div className="" style={{margin:"0 2rem"}}>
                                             <Link to={`/product/${item.product}`}>{item.name}</Link>
                                         </div>
                                         <div>
@@ -69,7 +69,7 @@ const CartScreen = (props) => {
                                                 <option value={2}>2</option>
                                                 <option value={3}>3</option>
                                             </select> */}
-                                            <div class="form-group">
+                                            <div class="form-group" style={{margin:"0 2rem"}}>
                                                 <select class="form-select"
                                                     value={item.qty}
                                                     onChange={(e) =>

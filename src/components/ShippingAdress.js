@@ -47,11 +47,11 @@ const ShippinngAdress = () => {
   return (
     <div style={{ marginTop: "2rem" , padding:"4rem 0"}}>
       <CheckoutSteps step1="active" step2="active" />
-      <div class="contact-form" style={{ margin:"1rem 5rem"}}>
+      <div class="contact-form" style={{ margin:"1rem auto",width:"75%"}}>
         <span class="circle two"></span>
 
         <form autocomplete="on" onSubmit={handleSubmit}>
-          <h3 class="title">Shipping Address</h3>
+          <h3 class="title" style={{color:"#fff"}}>Shipping Address</h3>
           <div class="input-container">
             <input type="text" name="fullName" class="input" placeholder='Nom :' value={fullName} onChange={(e) => setFullName(e.target.value)} required />
           </div>
@@ -72,7 +72,7 @@ const ShippinngAdress = () => {
             <input name="country" class="input" placeholder='Governorat :' value={country} onChange={(e) => setCountry(e.target.value)} required />
         
           </div>
-          <input type="submit" value="Continuer" class="btn" style={{ width: "100%" }} />
+          <input type="submit" value="Continuer" style={{ width: "100%" }} className="randomBtn" />
         </form>
       </div>
     </div>

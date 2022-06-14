@@ -70,7 +70,7 @@ const Header = ({ userInfo }) => {
           }
           {
             userInfo && !userInfo.isAdmin &&
-            <Link to="#" className='user-container' onClick={handlDropDownClick}> <FaUserCircle style={{ position: "relative", top: "3px", marginRight: "8px" }} />{" "}
+            <Link to="#" className='user-container' onClick={handlDropDownClick}> <FaUserCircle style={{ position: "relative", top: "-1px !important", marginRight: "8px" }} />{" "}
               {userInfo.name} <i className="fa fa-caret-down"></i>{' '} {/*<i class="fa-solid fa-user"></i>*/}
             </Link>
           }
@@ -135,7 +135,7 @@ const Header = ({ userInfo }) => {
         {
           userInfo && userInfo.isAdmin === false && (
             <div className="dropdown">
-              <Link to="#" className='user-container' onClick={handlDropDownClick}> <FaUserCircle style={{ position: "relative", top: "3px", marginRight: "8px" }} />{" "}
+              <Link to="#" className='user-container' onClick={handlDropDownClick}> <FaUserCircle style={{ position: "relative", top: "-1px", marginRight: "8px" }} />{" "}
                 {userInfo.name} <i className="fa fa-caret-down"></i>{' '} {/*<i class="fa-solid fa-user"></i>*/}
               </Link>
               <ul className="dropdown-content">

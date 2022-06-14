@@ -15,7 +15,7 @@ const Post = () => {
         setTimeout(() => {
             window.scrollTo({
                 left:0,
-                top:postsSection
+                top:postsSection +400
             });
         }, 800);
     }

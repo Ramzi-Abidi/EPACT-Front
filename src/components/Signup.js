@@ -12,18 +12,20 @@ const Signup = (props) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [expertDomain, setExpertDomain] = useState("");
+  const [expertCheckBox, setExpertCheckBox] = useState("");
 
   const userRegister = useSelector((state) => state.userRegister);
   const { userInfo, loading, error } = userRegister;
   const dispatch = useDispatch();
   const history = useHistory();
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== confirmPassword)
       alert("confirm password are not matched");
     else
-      dispatch(register(name, email, password));
+      dispatch(register(name, email, password, expertCheckBox, expertDomain));
   };
 
   useEffect(() => {
@@ -82,28 +84,40 @@ const Signup = (props) => {
           <form autoComplete="on">
             {loading && <LoadingBox></LoadingBox>}
             {error && <MessageBox variant={"danger"}> {error} </MessageBox>}
-            <h3 class="title" style={{color:"#fff"}}>Sign up</h3>
+            <h3 class="title" style={{ color: "#fff" }}>Sign up</h3>
 
             <div class="input-container">
-              <input type="text" name="name" class="input" placeholder='name' onChange={(e) => setName(e.target.value)} />
-              <span>name</span>
+              <input type="text" class="input" placeholder='Nom' onChange={(e) => setName(e.target.value)} />
+              <span>Nom</span>
             </div>
             <div class="input-container">
-              <input type="email" name="email" class="input" placeholder='email' onChange={(e) => setEmail(e.target.value)} />
+              <input type="email" name="email" class="input" placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
               <span>Email</span>
             </div>
             <div class="input-container">
-              <input type="password" name="password" class="input" placeholder='password' onChange={(e) => setPassword(e.target.value)} />
-              <span>password</span>
+              <input type="password" class="input" placeholder='Mot de passe' onChange={(e) => setPassword(e.target.value)} />
+              <span>Mot de passe</span>
             </div>
 
             <div class="input-container">
               <input type="password" name="confirmPassword" class="input" placeholder='confirm password' onChange={(e) => setConfirmPassword(e.target.value)} />
-              <span>Confirm Password</span>
+              <span>Confirmer le mot de passe</span>
+            </div>
+
+            <div class="input-container">
+              <legend class="mt-4">Expert ? </legend>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={(e) => setExpertCheckBox(e.target.value)} />
+                <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+              </div>
+            </div>
+
+            <div class="input-container">
+              <input type="text" class="input" placeholder='Expert en quel domaine' onChange={(e) => setExpertDomain(e.target.value)} />
             </div>
 
             <div className='input-container1'>
-              <input type="submit" value="Send" class="btn btn-outline-primary signup" style={{width:"11rem",height:"40px"}}/>
+              <input type="submit" value="Send" class="btn btn-outline-primary signup" style={{ width: "11rem", height: "40px" }} />
               <div>
                 Vous avez déjà un compte ? <Link to="/signin"> Sign In </Link>
               </div>

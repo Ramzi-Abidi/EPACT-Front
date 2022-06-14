@@ -45,13 +45,13 @@ const ProductScreen = (props) => {
             :
             (
               <>
-                <div>
+               {/*  <div>
                   <Link to="/" className='back-to-home' style={{ marginLeft: "20px", fontWeight: "bold", color: "#333" }}> back to home</Link>
                   <button type="button" class="btn btn-primary" onClick={() => history.push("/")}>Retour</button>
-                </div>
+                </div> */}
 
-                <div className="row top" style={{ margin: "4rem 3.5rem" }}>
-                  <div className="col-2">
+                <div className="row top" style={{ margin: "4rem 1rem" }}>
+                  <div className="col-2" style={{marginRight:"3rem"}}>
                     <img src={`http://102.219.178.49:5000/${product.image}`} className="large" alt={product.name} />
                   </div>
                   <div className="col-1 ">

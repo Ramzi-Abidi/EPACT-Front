@@ -141,13 +141,15 @@ export const signin = (email, password) => async (dispatch) => {
     }
 };
 
-export const register = (name, email, password) => async (dispatch) => {
+export const register = (name, email, password, expertCheckBox,expertDomain) => async (dispatch) => {
     dispatch({ type: USER_REGISTER_REQUEST, payload: { email, password } });
     try {
-        const { data } = await Axios.post('http://102.219.178.49:5000/api/users/register', {
+        const { data } = await Axios.post('http://localhost:5000/api/users/register', {
             name,
             email,
             password,
+            expertCheckBox,
+            expertDomain
         });
         dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
         dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });

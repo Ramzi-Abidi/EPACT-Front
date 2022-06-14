@@ -49,10 +49,10 @@ export default function ProfileScreen() {
     return (
 
 
-        <div className="contact-form" onSubmit={submitHandler} style={{margin:"2rem auto",width:"50%",marginTop:"8rem"}}>
+        <div className="contact-form" onSubmit={submitHandler} style={{margin:"2rem auto",width:"60%",marginTop:"8rem"}}>
 
             <form autocomplete="on">
-                <h3 className="title">Profile</h3>
+                <h3 className="title" style={{color:"#fff"}}>Profile</h3>
 
                 {loading ? (
                     <LoadingBox></LoadingBox>
@@ -117,10 +117,12 @@ export default function ProfileScreen() {
                                     className="input"
                                 ></input>
                             </div>
+                                <div className="input-container" style={{display:"flex", flexFlow:"row-reverse"}}>
 
-                            <button className="btn" type="submit">
+                            <button className="btn btn-outline-primary signup" type="submit" style={{marginRight:"3rem"}}>
                                 Update
                             </button>
+                                </div>
                         </div>
                     </>
                 )}

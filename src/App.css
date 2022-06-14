@@ -169,7 +169,21 @@ a.brand {
   display: flex !important;
   justify-content: space-around !important;
   align-items: center !important;
-  width: 95% !important;
+}
+
+.randomBtn {
+  width: 90% !important;
+  color: #fff !important;
+  border: 1px solid #fff !important;
+  background-color: transparent !important;
+  transition: .5s;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.randomBtn:hover {
+  background-color: #fff !important;
+  color: #333 !important;
 }
 .row>* {
   flex-shrink: auto !important;
@@ -546,7 +560,7 @@ form {
 /*   height: 430px; */
   margin-top: 10%;
   padding: 7rem 3.5rem;
-  background-color: #f1f1f185;
+  background-color:#f5f5f585;
 }
 .news h3 {
   text-align: center;
@@ -897,7 +911,7 @@ i.fa-solid {
 }
 .background-container{
   width: 100%;
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   display: flex;
 }
 .bg-1{
@@ -907,6 +921,45 @@ i.fa-solid {
 .bg-2{
   flex: 1;
   background-color: rgb(163, 236, 240);
+}
+.commentButton {
+  align-self: end;
+    border-radius: 20px !important; 
+    background: #256bb9;
+    /* font-size: 15px; */
+    padding: 1rem;
+  margin-left:.6rem !important ;
+  transition: .5s;
+}
+.commentButton:hover {
+  background: #163d69 !important; 
+}
+.reply {
+  align-self: end;
+  border-radius: 21px;
+  padding: .7;
+  color: #000;
+  font-weight: bold;
+  border:none ;
+  background-color: #ececec;
+}
+/* .reply:hover {
+  background-color: #d3d3d3 !important;
+  color: #333 !important;
+} */
+.commentTextArea {
+  border-radius: 33px !important;
+  padding: 2.2rem !important;
+  font-size: 16px;
+  width: 100% !important;
+}
+.makeCommentSection {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0rem 1.5rem;
 }
 .about-container{
   width: 60%;
@@ -1019,7 +1072,17 @@ i.fa-solid {
       height: 305px;
   }
 }
+
+@media (max-width:1055px) {
+  .background-container {
+    margin: 7rem 0;
+  }
+
+}
 @media screen and (max-width: 1100px){
+   .site-desc{
+    margin-top: 10rem; 
+   }
   .links {
     margin: 4px 0;
     margin-left: 2rem;
@@ -1070,16 +1133,11 @@ i.fa-solid {
   margin:1rem ;
   padding:2rem ;
 }
-
-/**/
-
-
 .search {
   width: 60%;
   position: relative;
   display: flex;
 }
-
 .searchTerm {
   font-size: 16px;
   width: 100%;
@@ -1089,11 +1147,26 @@ i.fa-solid {
   outline: none;
   color: #131313;
 }
-
+.imgContainer img{
+  width: 25% !important;
+}
+.imgContainer {
+  width: 11rem !important;
+  /*margin-right: 2rem !important;*/
+}
+.singleComment {
+  margin: 0.5rem;
+  padding: 1.5rem ;
+  align-items: center ;
+  background: #f1f1f1f1 ;
+  border-radius: 29px ;
+  display: flex ;
+  flex-direction: column;
+  flex-flow: wrap;
+}
 .searchTerm:focus{
   color: #131313;
 }
-
 .searchButton {
   width: 40px;
   border: 1px solid #818181;
@@ -1105,9 +1178,6 @@ i.fa-solid {
   font-size: 20px;
   cursor: auto;
 }
-
-/*Resize the 
-to see the search bar change!*/
 .wrapp{
   width: 30%; 
   width: 38%;
@@ -1116,6 +1186,9 @@ to see the search bar change!*/
 }
 /**/
 @media (max-width:992px) {
+  .background-container {
+    margin: 0;
+  }
   .active {
     height: auto;
   }
@@ -1140,6 +1213,9 @@ to see the search bar change!*/
   }
 }
 @media screen and (max-width: 768px){
+  .div{
+    width: 100% !important;
+  }
   #wrappers {
     margin: 0;
   }
@@ -1185,7 +1261,7 @@ to see the search bar change!*/
 	text-align: center;
 }
 .swiper-wrapper {
-  flex-direction: column;
+flex-direction: column; 
   width: 100% !important;
 }
 .swiper-slide {
@@ -1245,9 +1321,6 @@ to see the search bar change!*/
   .input {
     padding: 0.45rem 1.2rem;
   }
-/*   .btn {
-    padding: 0.45rem 1.2rem;
-  } */
 }
 @media (max-width:768px) {
   .site-desc article h2 {
@@ -1262,10 +1335,6 @@ to see the search bar change!*/
     width: auto;
     font-size: 13px;
   }
-
-/*   .site-desc {
-    height: 640px;
-  } */
   .links:hover {
     color: var(--second-color) !important;
   }

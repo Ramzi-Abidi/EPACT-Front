@@ -26,6 +26,7 @@ import Orders from './components/Orders';
 import Swiper from './components/Swiper';
 import OrderScreen from "./components/OrderScreen" ;
 import Tojrab from "./components/Tojrab";
+import CommentScreen from './components/CommentScreen';
 
 function App() {
 
@@ -91,6 +92,9 @@ function App() {
             </Route>
 
             <Route path="/product/:id" component={ProductScreen}>
+            </Route>
+
+            <Route path="/comment/:id" component={CommentScreen}>
             </Route>
 
             <Route path="/editProduct/:id" component={EditProduct}>
