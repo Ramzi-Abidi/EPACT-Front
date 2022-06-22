@@ -36,7 +36,7 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
             .catch((err) => {
                 console.log(err);
             })*/
-        fetch(`http://localhost:5000/api/replies/allReplies/${commentId}`)
+        fetch(`http://102.219.178.49:5000/api/replies/allReplies/${commentId}`)
             .then((res) => {
                 setLoading(true);
                 return res.json();
@@ -79,7 +79,7 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ replyContent: replyContent, commentId: id, postId: postId, answerEmail: answer, name: name })
         };
-        fetch('http://localhost:5000/api/replies/postReply', requestOptions)
+        fetch('http://102.219.178.49:5000/api/replies/postReply', requestOptions)
             .then((res) => {
                 console.log(res);
                 return res.json();
@@ -110,7 +110,7 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
         });
         setComments(arr);
 
-        fetch('http://localhost:5000/api/deleteComment/' + id, {        //   /api/deleteComment/:id
+        fetch('http://102.219.178.49:5000/api/deleteComment/' + id, {        //   /api/deleteComment/:id
             method: 'DELETE',
         })
             .then(res => {
@@ -136,7 +136,7 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
         });
         setReplies(arr);
 
-        fetch('http://localhost:5000/api/replies/deleteReply/' + id, {
+        fetch('http://102.219.178.49:5000/api/replies/deleteReply/' + id, {
             method: 'DELETE',
         })
             .then(res => {

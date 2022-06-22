@@ -43,7 +43,7 @@ const CommentScreen = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ commentContent: commentContent, postId: postId, answerEmail: commenter, name: name })
         };
-        fetch('http://localhost:5000/api/comments/postComment', requestOptions)
+        fetch('http://102.219.178.49:5000/api/comments/postComment', requestOptions)
             .then((res) => {
                 setLoadingComment(true);
                 return res.json();
@@ -68,7 +68,7 @@ const CommentScreen = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/comments/allComments/${postId}`)
+        fetch(`http://102.219.178.49:5000/api/comments/allComments/${postId}`)
         .then((res) => {
             setLoadingComments(true);
             return res.json();
@@ -87,7 +87,7 @@ const CommentScreen = () => {
         })
 
         //document.querySelector(".commentTextArea").focus();
-        fetch(`http://localhost:5000/api/comments/${postId}`)
+        fetch(`http://102.219.178.49:5000/api/comments/${postId}`)
             .then((res) => {
                 setLoadingPost(true);
                 return res.json();
