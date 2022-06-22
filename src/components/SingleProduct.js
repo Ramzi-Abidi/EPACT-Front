@@ -39,7 +39,7 @@ const SingleProduct = ({ prod, setProducts, products }) => {
         </Link>
         <div className="card-body">
           <Link to={`/product/${prod._id}`}>
-            <h2 style={{ padding: "0.5rem 0", marginTop: "0.85rem", color:"#333" }}> Nom : {prod.name} </h2>
+            <h2 style={{ padding: "0.5rem 0", marginTop: "0.85rem", color: "#333" }}> Nom : {prod.name} </h2>
           </Link>
           <div className="price">Prix : {prod.price} dt</div>
 
@@ -56,8 +56,8 @@ const SingleProduct = ({ prod, setProducts, products }) => {
                   <AiTwotoneDelete style={{ fontSize: "20px", color: "red", position: "relative", top: "4px" }} onClick={() => handleDelete(prod._id)} />
                 </Link> */}
                 <div>
-                  <Button variant="outline-success" style={{ padding: ".6rem 3rem" }} className="editButton"><Link to={`editProduct/${prod._id}`} style={{color:"#333"}} className="edit">  Editer </Link></Button>{' '}
-                  <Button variant="outline-danger" style={{ padding: ".6rem 1.8rem" }} onClick={() => handleDelete(prod._id)}>Supprimer</Button>{' '}
+                  <Button variant="outline-success" style={{ padding: ".6rem 3rem" }} className="editButton"><Link to={`editProduct/${prod._id}`} style={{ color: "#333", fontWeight: "bold" }} className="edit">  Editer </Link></Button>{' '}
+                  <Button variant="outline-danger" style={{ padding: ".6rem 1.8rem", fontWeight: "bold" }} onClick={() => handleDelete(prod._id)}>Supprimer</Button>{' '}
                 </div>
               </div>
             </div>
