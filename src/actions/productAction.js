@@ -1,5 +1,3 @@
-//second page:
-// Action creators : houma e slaves(fcts) ely el UI yaatehom l'order, w houma yaato lel piegons el letters(fehe hajtyn action,payload).
 
 import { ADD_TO_CART, CART_EMPTY, CART_REMOVE, CART_SAVE_SHIPPING_ADDRESS, ORDER_CREATE_FAIL, ORDER_CREATE_REQUEST, ORDER_CREATE_SUCCESS, ORDER_MINE_LIST_REQUEST, PRODUCT_DEFAULT_FAIL, PRODUCT_DEFAULT_REQUEST, PRODUCT_DEFAULT_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, USER_DETAILS_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT, USER_UPDATE_PROFILE_FAIL, USER_UPDATE_PROFILE_REQUEST, USER_UPDATE_PROFILE_SUCCESS } from "../constants/productConstant"
 import Axios from "axios";
@@ -30,9 +28,8 @@ import Axios from "axios";
     }
 }; */
 
-//first slave (fct)
 export const listProducts = () => async (dispatch) => {
-    dispatch({                  //dispatch hiya el pigeon (7mema) wl object ly f wost'ha hiya el letter ely bch t'hezha lel banker(reducer) .
+    dispatch({                  
         type: PRODUCT_LIST_REQUEST,
     });
 
@@ -128,6 +125,8 @@ export const signin = (email, password) => async (dispatch) => {
     dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
     try {
         const { data } = await Axios.post('http://102.219.178.49:5000/api/users/signin', { email, password });
+        console.log(data) ;
+
         dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
         localStorage.setItem('userInfo', JSON.stringify(data));
     } catch (error) {
@@ -141,16 +140,17 @@ export const signin = (email, password) => async (dispatch) => {
     }
 };
 
-export const register = (name, email, password, expertCheckBox,expertDomain) => async (dispatch) => {
+export const register = (name, email, password, expertCheckBox, expertDomain) => async (dispatch) => {
     dispatch({ type: USER_REGISTER_REQUEST, payload: { email, password } });
     try {
-        const { data } = await Axios.post('http://localhost:5000/api/users/register', {
+        const { data } = await Axios.post('http://102.219.178.49:5000/api/users/register', {
             name,
             email,
             password,
             expertCheckBox,
             expertDomain
         });
+        
         dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
         dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
         localStorage.setItem('userInfo', JSON.stringify(data));

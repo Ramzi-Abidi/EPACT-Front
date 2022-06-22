@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import "./post.css";
 import swal from "sweetalert";
 import { useHistory } from 'react-router-dom';
+import adminLogo from "../images/user (1).png" ;
+
 
 const Post = () => {
     const [textArea, setTextArea] = useState("");
@@ -67,7 +69,7 @@ const Post = () => {
                         <h4>Publier Quelque Chose</h4>
                         <form action="#" onSubmit={handleSubmit}>
                             <div className="contentPost">
-                                <img src="fb-icons/logo.png" alt="logo" />
+                                <img src={adminLogo} alt="logo" style={{width:"3rem",marginRight:".7rem"}} />
                                 <div className="details">
                                     <p> <b>Admin</b></p>
                                 </div>

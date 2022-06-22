@@ -1,8 +1,8 @@
-//the UI : el king yaayet lel slaves bl useDispatch() fy useEffect() . w baaed yjib e state ely tbadlt bl useSelector(means yparcoury el states lkol w yjibha), w baaed bouna2an 3lehe yrajja3ha JSX wela conditional rendering 3a property taa e state . 
 
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 import { detailsProduct } from '../actions/productAction';
 import LoadingBox from './LoadingBox';
 import MessageBox from './MessageBox';
@@ -14,10 +14,9 @@ const ProductScreen = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(detailsProduct(props.match.params.id));   //naaytou lel slaves(fcts mtaa el action) bl useDispatch() ;
+    dispatch(detailsProduct(props.match.params.id));
   }, []);
 
-  //baddelna fl state with the previous "useEffect()" w tawa naawdo njiboha e state .
   const productDetails = useSelector((state) => state.productDetails);
 
   const { loading, error, product } = productDetails;
@@ -32,7 +31,8 @@ const ProductScreen = (props) => {
       history.push(`/cart/${props.match.params.id}?qty=${qty}`);
     //history.push(`/cart/`);
     else {
-      props.history.push("/signin");
+      swal("Error", "Vous devez d'abord vous connecter", "warning");
+      history.push(`/signin`);
     }
   };
 
@@ -45,10 +45,6 @@ const ProductScreen = (props) => {
             :
             (
               <>
-               {/*  <div>
-                  <Link to="/" className='back-to-home' style={{ marginLeft: "20px", fontWeight: "bold", color: "#333" }}> back to home</Link>
-                  <button type="button" class="btn btn-primary" onClick={() => history.push("/")}>Retour</button>
-                </div> */}
 
                 <div className="row top" style={{ margin: "4rem 1rem" }}>
                   <div className="col-2" style={{marginRight:"3rem"}}>
@@ -57,11 +53,13 @@ const ProductScreen = (props) => {
                   <div className="col-1 ">
                     <div className='card card-body'>
                       <ul>
-                        <li>
-                          <h1 className='title'> {product.name} </h1>
+                        <li style={{display:"flex"}}>
+                          <h4 className='title'> <b>Nom :</b> </h4>  <h4 style={{marginLeft:"1rem",marginBottom:"0"}}>{product.name} </h4>
                         </li>
-                        <h4 className='top-margin'>Prix : </h4> {product.price} dt
-                        <h4 className='top-margin'>Description : </h4> {product.description}
+                        <li style={{display:"flex",alignItems:"center"}}>
+                        <h4 className='top-margin'><b>Prix : </b></h4> <h4 style={{marginLeft:"1rem",marginBottom:"0"}}> {product.price} dt </h4>
+                        </li>
+                        {/* <h4 className='top-margin'><b> Description :</b> </h4> <h4> {product.description} </h4> */}
                       </ul>
                     </div>
 
@@ -80,11 +78,10 @@ const ProductScreen = (props) => {
                             <h4 style={{ margin: "1.7rem 0" }}>Qty:</h4>
                             <div className=''>
                               <div class="form-group">
-                                <select class="form-select" style={{ margin: "1.7rem 0" }} id="exampleSelect1">
+                                <select class="form-select" style={{ margin: "1.7rem 0" }} id="exampleSelect1" onChange={(e)=>setQty(e.target.value)}>
                                   <option>1</option>
                                   <option>2</option>
                                   <option>3</option>
-
                                 </select>
                               </div>
                             </div>

@@ -38,6 +38,17 @@ const Productlist = () => {
 
   }, []);
 
+  const scrollToProducts = () => {
+    const productsSection = document.querySelector(".product-holder").offsetTop;
+    console.log(productsSection);
+    setTimeout(() => {
+      window.scrollTo({
+        left: 0,
+        top: productsSection + 70
+      });
+    }, 900);
+  }
+
   //adding new products (create operation) :
   const send = (e) => {
     e.preventDefault();
@@ -54,7 +65,10 @@ const Productlist = () => {
         setTextBtn("Créer...");
         if (res) {
           setTextBtn("Ajouter");
-          swal("done!", "publier avec succès", "success");
+          swal("done!", "publier avec succès", "success").then(() => {
+            history.push("/");
+            scrollToProducts();
+          });
         }
       })
       .catch((err) => {
@@ -63,32 +77,19 @@ const Productlist = () => {
         swal("Problème!", "une erreur s'est produite, veuillez réessayer plus tard", "warning");
       })
 
-      setNameProd("") ;
-      setPrice("") ;
+    setNameProd("");
+    setPrice("");
   };
 
   return (
-    /*     <div className="our-container" style={{ outline: "none", border: "none" }}>
-    
-          <div className="admin-product-form-container">
-            <form method="POST" onSubmit={send} encType="multipart/form-data">
-              <h3>Ajouter un nouveau produit</h3>
-              <input type="text" placeholder="le nom du produit" className="box" value={nameProd} required onChange={(e) => setNameProd(e.target.value)} />
-              <input type="number" placeholder="le prix de produit " className="box" value={price} required onChange={(e) => setPrice(e.target.value)} />
-              <input type="file" filename="product_image" className="box" required onChange={(e) => setFile(e.target.files[0])} />
-              <input type="submit" className="btn-prodlist" name="add_product" value={textBtn} />
-            </form>
-          </div>
-    
-          
-        </div> */
-    <form style={{ padding: "2.3rem 3.5rem", zIndex: 10, overflow: "hidden", position: "relative", margin: "1rem 3rem" }} onSubmit={send}  encType="multipart/form-data" >
+
+    <form style={{ padding: "2.3rem 3.5rem", zIndex: 10, overflow: "hidden", position: "relative", margin: "1rem 3rem" }} onSubmit={send} encType="multipart/form-data" >
       <div className="container">
-        <fieldset style={{ margin: "2rem auto", width: "85%" ,padding: "2.2rem 0.5rem"}}>
+        <fieldset style={{ margin: "2rem auto", width: "85%", padding: "2.2rem 0.5rem" }}>
           <legend>Legend</legend>
           <div class="form-group">
             <label for="exampleInputEmail1" class="form-label mt-4">Nom du produit</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder='Nom : '  value={nameProd} onChange={(e) => setNameProd(e.target.value)}/>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder='Nom : ' value={nameProd} onChange={(e) => setNameProd(e.target.value)} />
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="form-label mt-4">Prix du produit </label>
@@ -97,9 +98,9 @@ const Productlist = () => {
 
           <div class="form-group">
             <label for="formFile" class="form-label mt-4">Image du produit</label>
-            <input class="form-control" type="file" filename="product_image" required onChange={(e) => setFile(e.target.files[0])}/>
+            <input class="form-control" type="file" filename="product_image" required onChange={(e) => setFile(e.target.files[0])} />
           </div>
-          <button type="submit" class="btn btn-primary" style={{backgroundColor:"#2780e3 !important", width:"9rem", height:"3rem", marginTop:"1.5rem"}}  value={textBtn} >Submit</button>
+          <button type="submit" class="btn btn-primary" style={{ backgroundColor: "#2780e3 !important", width: "9rem", height: "3rem", marginTop: "1.5rem" }} value={textBtn} >Submit</button>
         </fieldset>
       </div>
 

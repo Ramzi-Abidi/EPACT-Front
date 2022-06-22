@@ -53,7 +53,7 @@ const ShippinngAdress = () => {
         <form autocomplete="on" onSubmit={handleSubmit}>
           <h3 class="title" style={{color:"#fff"}}>Shipping Address</h3>
           <div class="input-container">
-            <input type="text" name="fullName" class="input" placeholder='Nom :' value={fullName} onChange={(e) => setFullName(e.target.value)} required />
+            <input type="text" name="fullName" class="input" placeholder='Nom et prénom :' value={fullName} onChange={(e) => setFullName(e.target.value)} required />
           </div>
           <div class="input-container">
             <input type="text" name="address" class="input" placeholder='Addresse :' value={address} onChange={(e) => setAddress(e.target.value)} required />
@@ -69,7 +69,7 @@ const ShippinngAdress = () => {
             
           </div>
           <div class="input-container textarea">
-            <input name="country" class="input" placeholder='Governorat :' value={country} onChange={(e) => setCountry(e.target.value)} required />
+            <input name="country" class="input" placeholder='Pays :' value={country} onChange={(e) => setCountry(e.target.value)} required />
         
           </div>
           <input type="submit" value="Continuer" style={{ width: "100%" }} className="randomBtn" />

@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { AiOutlineComment, AiOutlineEdit, AiTwotoneDelete } from "react-icons/ai";
 import swal from "sweetalert";
 import MessageBox from './MessageBox';
+import adminLogo from "../images/user (1).png";
 
 // Import Swiper styles
 
@@ -15,6 +16,13 @@ export default () => {
     let history = useHistory();
 
     const handleCommentClick = (post) => {
+
+        if (!JSON.parse(localStorage.getItem("userInfo"))) {
+            swal("Error", "You should sign in first", "warning");
+            history.push(`/signin`);
+            return;
+        }
+
         history.push(`/comment/${post._id}`);
     };
     useEffect(() => {
@@ -71,53 +79,19 @@ export default () => {
             {
                 posts.map((post) => {
                     return (
-                        /*  <SwiperSlide>
-                             <div id="wrappers" key={post._id}>
-                                 <div className="cf">
-                                     <img src="http://2016.igem.org/wiki/images/e/e0/Uclascrolldown.png" class="arrow" />
-                                     <h1 className="name">
-                                         <li>Admin</li>
-                                     </h1>
-                                     <p className="date">2 hr ago</p>
-                                 </div>
-                                 <p className="status">{post.postContent}</p>
-                                 <div className="action">
-                                     <div className="comment">
-                                         <li style={{ cursor: "pointer" }}>
-                                             <AiOutlineComment />
-                                             <p>Comment</p>
-                                         </li>
-                                     </div>
-                                     {localStorage.getItem("userInfo") && JSON.parse(localStorage.getItem("userInfo")).isAdmin &&
-                                         <>
-                                             <div class="share">
-                                                 <Link to={`posts?${post._id}`}>
-                                                     <AiOutlineEdit style={{ fontSize: "20px", position: "relative", top: "4px" }} />
-                                                 </Link>
-                                             </div>
- 
-                                             <div className="share">
-                                                 <Link to="#">
-                                                     <AiTwotoneDelete style={{ fontSize: "20px", color: "red", position: "relative", top: "4px" }} onClick={() => handleDelete(post._id)} />
-                                                 </Link>
-                                             </div>
-                                         </>
-                                     }
- 
-                                 </div>
- 
-                             </div>
- 
-                         </SwiperSlide> */
+
                         <SwiperSlide>
                             <div class="card border-primary mb-3" style={{ "maxWidth": "48rem" }} key={post._id} >
-                                <div class="card-header" style={{ padding: "1.5rem" }}><b> Admin</b> </div>
-                               
-                                <div class="card-body">
+                                <div class="card-header" style={{ padding: "1.5rem" }}>
+                                   {/*  <img src={adminLogo} alt="logo" style={{ width: "3rem", marginRight: ".7rem" }} /> */}
+                                    {/* <b> Admin</b> */}
                                     <h4 class="card-title"> <b> {post.title} </b> </h4>
+
+                                </div>
+                                <div class="card-body">
                                     <p class="card-text" style={{ marginTop: "1rem" }}> {post.postContent}</p>
                                 </div>
-                                <div style={{ margin: "2rem 1rem" ,display:"flex", justifyContent:"flex-end"}}>
+                                <div style={{ margin: "2rem 1rem", display: "flex", justifyContent: "flex-end" }}>
                                     {/*<button type="button" class="btn btn-outline-info" style={{ marginRight: ".5rem", height: "3rem", fontSize: "15px" }} >Voir tous les commentaires </button>*/}
                                     <button type="button" class="btn btn-outline-primary" style={{ marginRight: ".5rem", width: "10rem", height: "3rem", fontSize: "15px" }} onClick={() => handleCommentClick(post)}>Commenter</button>
                                     {

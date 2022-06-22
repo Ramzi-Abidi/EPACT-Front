@@ -114,21 +114,21 @@ const PlaceOrder = () => {
             </ul>
           </div>
 
-          <div className="col-1" style={{ height: "70%", width: "45%", marginLeft: "6rem" }}>
+          <div className="col-1" style={{ height: "70%", width: "40%", marginLeft: "6rem" }}>
             <div className="card card-body">
-              <ul>
+              <ul style={{width:"75%"}}>
                 <li>
                   <h2>Les détails de l'ordre</h2>
                 </li>
                 <li>
-                  <div className="row">
+                  <div className="" style={{display:"flex",justifyContent:"space-between", margin:"1.2rem 0"}}>
                     <strong>Items : </strong>
                     <div>{cart.itemsPrice.toFixed(2)} dt</div>
                   </div>
                 </li>
 
                 <li>
-                  <div className="row">
+                  <div className="" style={{display:"flex",justifyContent:"space-between"}}>
                     <div>
                       <strong> Prix Total : {' '} </strong>
                     </div>

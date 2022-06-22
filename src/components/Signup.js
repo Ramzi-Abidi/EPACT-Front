@@ -13,6 +13,7 @@ const Signup = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [expertDomain, setExpertDomain] = useState("");
+  const [show, setShow] = useState(false);
   const [expertCheckBox, setExpertCheckBox] = useState("");
 
   const userRegister = useSelector((state) => state.userRegister);
@@ -28,6 +29,11 @@ const Signup = (props) => {
       dispatch(register(name, email, password, expertCheckBox, expertDomain));
   };
 
+  const handleExpert = (ch) => {
+    setShow(!show);
+    setExpertCheckBox(ch);
+  }
+
   useEffect(() => {
     if (userInfo)
       history.push("/");
@@ -37,8 +43,6 @@ const Signup = (props) => {
   return (
     <div className='holder' >
       <div class="background-container" style={{ background: "#f1f1f1f1" }}>
-        {/*     <div class="bg-1"></div>
-            <div class="bg-2"></div> */}
       </div>
 
       <span class="big-circle"></span>
@@ -48,31 +52,25 @@ const Signup = (props) => {
 
           <div class="info">
             <div class="information">
-              <p>Le lieu</p>
+              <p><strong style={{ marginRight: "2.4rem" }}> Email : </strong> <a href="mailto:siwarbenkraeim1@gmail.com">siwarbenkraeim1@gmail.com</a></p>
+
             </div>
             <div class="information">
-              <p>lorem@ipsum.com</p>
-            </div>
-            <div class="information">
-              <p>123-456-789</p>
+              <p> <strong style={{ marginRight: "1rem" }}>Num tel : </strong><b> 52070045</b></p>
+
             </div>
           </div>
 
           <div class="social-media">
-            <p>Connect with us :</p>
+            <p> Connectez avec nous : </p>
             <div class="social-icons">
-              <Link to="#">
-                <i class="fab fa-facebook-f"></i>
-              </Link>
-              <Link to="#">
-                <i class="fab fa-twitter"></i>
-              </Link>
+
+              <a href="https://www.facebook.com/EPACTTunsie/" target={"_blank"}><i class="fab fa-facebook-f">  </i></a>
+
               <Link to="#">
                 <i class="fab fa-instagram"></i>
               </Link>
-              <Link to="#">
-                <i class="fab fa-linkedin-in"></i>
-              </Link>
+
             </div>
           </div>
         </div>
@@ -104,17 +102,20 @@ const Signup = (props) => {
               <span>Confirmer le mot de passe</span>
             </div>
 
-            <div class="input-container">
-              <legend class="mt-4">Expert ? </legend>
+            <div class="input-container" style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "85%" }}>
+              <legend class="mt-4">Etes-vous un expert ? </legend>
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={(e) => setExpertCheckBox(e.target.value)} />
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" style={{ cursor: "pointer" }} onChange={(e) => handleExpert(e.target.value)} />
                 <label class="form-check-label" for="flexSwitchCheckDefault"></label>
               </div>
             </div>
 
-            <div class="input-container">
-              <input type="text" class="input" placeholder='Expert en quel domaine' onChange={(e) => setExpertDomain(e.target.value)} />
-            </div>
+            {
+              show &&
+              <div class="input-container">
+                <input type="text" class="input" placeholder='Expert en quel domaine' onChange={(e) => setExpertDomain(e.target.value)} />
+              </div>
+            }
 
             <div className='input-container1'>
               <input type="submit" value="Send" class="btn btn-outline-primary signup" style={{ width: "11rem", height: "40px" }} />

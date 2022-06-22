@@ -64,8 +64,6 @@ const Contact = () => {
           <h3 class="title">Contactez-nous</h3>
           {loading && <LoadingBox> En cours ... </LoadingBox>}
           <p class="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-            dolorum adipisci recusandae praesentium dicta!
           </p>
 
           <div class="info">

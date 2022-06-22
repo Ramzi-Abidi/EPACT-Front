@@ -31,7 +31,8 @@ const Footer = () => {
           <div class="footer-col">
             <h4>Suivez-nous</h4>
             <div class="social-links">
-              <Link to="" target={"_blank"}><i class="fab fa-facebook-f"></i></Link>
+              <a href="https://www.facebook.com/EPACTTunsie/" target={"_blank"}><i class="fab fa-facebook-f">  </i></a> 
+
               <Link to="#"><i class="fab fa-instagram"></i></Link>
             </div>
           </div>

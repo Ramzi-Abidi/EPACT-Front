@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Image from "../images/Asset 1.png";
 import { useHistory } from 'react-router-dom';
 import { FaUserCircle, FaCaretDown } from 'react-icons/fa';
+//import basket from "../images/10527_basket_blue_shopping_icon.png";
+import basket from "../images/8213360_shopping_shop_ecommerce_cart_bag_icon.png";
 
 const Header = ({ userInfo }) => {
 
@@ -11,7 +13,7 @@ const Header = ({ userInfo }) => {
 
   //drop down funcionality
   const handlDropDownClick = () => {
-    document.querySelector(".dropdown-content").style.display="block" ;
+    document.querySelector(".dropdown-content").style.display = "block";
   };
 
   const handleMenuClick = () => {
@@ -32,7 +34,7 @@ const Header = ({ userInfo }) => {
   };
 
   const signoutHandler = () => {
-    if(click) {
+    if (click) {
       setClick(!click);
     }
 
@@ -62,20 +64,20 @@ const Header = ({ userInfo }) => {
         <div className='itemsContainer'>
           {
             userInfo && userInfo.isAdmin &&
-            <Link to="#admin" className='user-container'>
-              <FaUserCircle style={{ position: "relative", top: "-1.5px", marginRight: "3.7px" }} /> Admin
+            <Link to="#admin" className='user-container noHover'>
+              <FaUserCircle style={{ position: "relative", top: "-1.5px", marginRight: "3.5px" }} /> Admin
               <i className="fa fa-caret-down"></i>
             </Link>
 
           }
           {
             userInfo && !userInfo.isAdmin &&
-            <Link to="#" className='user-container' onClick={handlDropDownClick}> <FaUserCircle style={{ position: "relative", top: "-1px !important", marginRight: "8px" }} />{" "}
+            <Link to="#" className='user-container noHover' onClick={handlDropDownClick}> <FaUserCircle style={{ position: "relative", top: "-1px !important", marginRight: "8px" }} />{" "}
               {userInfo.name} <i className="fa fa-caret-down"></i>{' '} {/*<i class="fa-solid fa-user"></i>*/}
             </Link>
           }
 
-          <Link to="/cart" className='links' onClick={handleMenuClick}><i class="fa-solid fa-basket-shopping"></i>
+          <Link to="/cart" className='links' onClick={handleMenuClick}><img src={basket} style={{ width: "2.7rem" }} />
             {cartItems.length > 0 ? <span className='badge'> {cartItems.length} </span> : <span className='badge'> 0 </span>}
           </Link>
 
@@ -108,11 +110,11 @@ const Header = ({ userInfo }) => {
           {userInfo && userInfo.isAdmin && (
             <>
               {/*           <Link to="/dashboard" className='links'>Dashboard</Link> */}
-              <Link to="/productlist" className='links' onClick={handleMenuClick}>Products</Link>
-              <Link to="/orders" className='links' onClick={handleMenuClick}>Orders</Link>
-              <Link to="/userlist" className='links' onClick={handleMenuClick}>Users</Link>
+              <Link to="/productlist" className='links' onClick={handleMenuClick}>Ajouter Produit</Link>
+              <Link to="/orders" className='links' onClick={handleMenuClick}>Commandes</Link>
+              {/*               <Link to="/userlist" className='links' onClick={handleMenuClick}>Users</Link> */}
               <Link to="/profile" className='links' onClick={handleMenuClick}> {userInfo.isAdmin ? "Admin" : "User"} Profile</Link>
-              <Link to="/post" className='links' onClick={handleMenuClick}>Post Something</Link>
+              <Link to="/post" className='links' onClick={handleMenuClick}>Publier quelque chose</Link>
               <Link to="#" onClick={signoutHandler} className='links' >
                 Sign Out
               </Link>
@@ -123,7 +125,7 @@ const Header = ({ userInfo }) => {
 
 
       <div className='second'>
-        <Link to="/cart" className='links'><i class="fa-solid fa-basket-shopping"></i>
+        <Link to="/cart" className='links'><img src={basket} style={{ width: "2.7rem" }} />
           {cartItems.length > 0 ? <span className='badge'> {cartItems.length} </span> : <span className='badge'> 0 </span>}
         </Link>
 
@@ -135,7 +137,7 @@ const Header = ({ userInfo }) => {
         {
           userInfo && userInfo.isAdmin === false && (
             <div className="dropdown">
-              <Link to="#" className='user-container' onClick={handlDropDownClick}> <FaUserCircle style={{ position: "relative", top: "-1px", marginRight: "8px" }} />{" "}
+              <Link to="#" className='user-container noHover' onClick={handlDropDownClick}> <FaUserCircle style={{ position: "relative", top: "-1px", marginRight: "8px" }} />{" "}
                 {userInfo.name} <i className="fa fa-caret-down"></i>{' '} {/*<i class="fa-solid fa-user"></i>*/}
               </Link>
               <ul className="dropdown-content">
@@ -165,7 +167,7 @@ const Header = ({ userInfo }) => {
 
         {userInfo && userInfo.isAdmin && (
           <div className="dropdown">
-            <Link to="#admin" className='user-container'>
+            <Link to="#admin" className='user-container noHover'>
               <FaUserCircle style={{ position: "relative", top: "-1px", marginRight: "3.7px" }} /> Admin
               <i className="fa fa-caret-down"></i>
             </Link>
@@ -174,19 +176,19 @@ const Header = ({ userInfo }) => {
                 <Link to="/dashboard" style={{ color: "#FFF", fontSize: "13px" }}>Dashboard</Link>
               </li> */}
               <li style={{ marginTop: ".5rem" }}>
-                <Link to="/productlist" style={{ color: "#FFF", fontSize: "13px" }}>Products</Link>
+                <Link to="/productlist" style={{ color: "#FFF", fontSize: "13px" }}>Ajouter produit</Link>
               </li>
               <li style={{ marginTop: ".5rem" }}>
-                <Link to="/orders" style={{ color: "#FFF", fontSize: "13px" }}>Orders</Link>
+                <Link to="/orders" style={{ color: "#FFF", fontSize: "13px" }}>Commandes</Link>
               </li>
-              <li style={{ marginTop: ".5rem" }}>
+              {/*      <li style={{ marginTop: ".5rem" }}>
                 <Link to="/userlist" style={{ color: "#FFF", fontSize: "13px" }}>Users</Link>
-              </li>
+              </li> */}
               <li style={{ marginTop: "1rem" }}>
                 <Link to="/profile" style={{ color: "#FFF", fontSize: "13px" }}> {userInfo.isAdmin ? "Admin" : "User"} Profile</Link>
               </li>
               <li style={{ marginTop: "1rem" }}>
-                <Link to="/post" style={{ color: "#FFF", fontSize: "13px" }}>Post Something</Link>
+                <Link to="/post" style={{ color: "#FFF", fontSize: "13px" }}>Publier</Link>
               </li>
               <li style={{ marginTop: "1rem" }}>
                 <Link to="#signout" onClick={signoutHandler} style={{ color: "#FFF", fontSize: "13px" }}>
