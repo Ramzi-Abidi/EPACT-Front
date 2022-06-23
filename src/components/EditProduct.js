@@ -19,6 +19,16 @@ const EditProduct = (props) => {
     const id = props.match.params.id;
     console.log(id);
 
+    const scrollToProducts = () => {
+        const productsSection = document.querySelector(".product-holder").offsetTop;
+        console.log(productsSection);
+        setTimeout(() => {
+            window.scrollTo({
+                left: 0,
+                top: productsSection + 70
+            });
+        }, 900);
+    }
 
     //editing new products :
     const send = (e) => {
@@ -37,7 +47,10 @@ const EditProduct = (props) => {
                     setTextBtn("Editer...");
 
                     setTimeout(() => {
-                        swal("done!", "Editer avec succès", "success");
+                        swal("done!", "editer avec succès", "success").then(() => {
+                            history.push("/");
+                            scrollToProducts();
+                        });
                     }, 1500);
                 }
                 setTextBtn("Editer");

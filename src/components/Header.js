@@ -3,8 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Image from "../images/Asset 1.png";
 import { useHistory } from 'react-router-dom';
-import { FaUserCircle, FaCaretDown } from 'react-icons/fa';
-//import basket from "../images/10527_basket_blue_shopping_icon.png";
+import { FaUserCircle } from 'react-icons/fa';
 import basket from "../images/8213360_shopping_shop_ecommerce_cart_bag_icon.png";
 
 const Header = ({ userInfo }) => {
@@ -124,15 +123,27 @@ const Header = ({ userInfo }) => {
       </ul>
 
 
-      <div className='second'>
-        <Link to="/cart" className='links'><img src={basket} style={{ width: "2.7rem" }} />
-          {cartItems.length > 0 ? <span className='badge'> {cartItems.length} </span> : <span className='badge'> 0 </span>}
-        </Link>
+      <div className='second' style={{ display: "flex", alignItems: "center" }}>
+        <ul style={{ display: "flex", alignItems: "center" }}>
 
-        <Link to="/" className='links'>Accueil</Link>
-        <Link to="/contact" className='links'>Contact</Link>
-        <Link to="/aboutUs" className='links'>à propos</Link>
-        {/*<Link to="/signin" className='links'>Sign In</Link>*/}
+          <li>
+            <Link to="/cart" className='links'><img src={basket} style={{ width: "2.7rem" }} />
+              {cartItems.length > 0 ? <span className='badge'> {cartItems.length} </span> : <span className='badge'> 0 </span>}
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className='links'>Accueil</Link>
+          </li>
+          <li>
+
+            <Link to="/contact" className='links'>Contact</Link>
+          </li>
+          <li>
+
+            <Link to="/aboutUs" className='links'>à propos</Link>
+          </li>
+          {/*<Link to="/signin" className='links'>Sign In</Link>*/}
+        </ul>
 
         {
           userInfo && userInfo.isAdmin === false && (

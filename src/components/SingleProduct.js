@@ -44,20 +44,13 @@ const SingleProduct = ({ prod, setProducts, products }) => {
           <div className="price">Prix : {prod.price} dt</div>
 
           {localStorage.getItem("userInfo") && JSON.parse(localStorage.getItem("userInfo")).isAdmin &&
-            <div style={{ display: "flex", margin: ".3rem", justifyContent: "space-between" }}>
-              {/*  <div class="share">
-                <Link to={`editProduct/${prod._id}`}>
-                  <AiOutlineEdit style={{ fontSize: "20px", position: "relative", top: "4px" }} />
-                </Link>
-              </div> */}
+            <div>
+            
 
               <div className="share">
-                {/*     <Link to="#">
-                  <AiTwotoneDelete style={{ fontSize: "20px", color: "red", position: "relative", top: "4px" }} onClick={() => handleDelete(prod._id)} />
-                </Link> */}
-                <div>
-                  <Button variant="outline-success" style={{ padding: ".6rem 3rem" }} className="editButton"><Link to={`editProduct/${prod._id}`} style={{ color: "#333", fontWeight: "bold" }} className="edit">  Editer </Link></Button>{' '}
-                  <Button variant="outline-danger" style={{ padding: ".6rem 1.8rem", fontWeight: "bold" }} onClick={() => handleDelete(prod._id)}>Supprimer</Button>{' '}
+                <div style={{display:"flex",justifyContent:"center"}}>
+                  <Link to={`editProduct/${prod._id}`} style={{ color: "#333", fontWeight: "bold" }} className="edit"> <Button variant="outline-success" style={{ padding: ".6rem 3rem",fontWeight:"bold",fontSize:"1.1rem" }} className="editButton">Editer</Button> </Link>  {' '}
+                  <Button variant="outline-danger" style={{ padding: ".6rem 1.8rem", fontWeight: "bold",fontSize:"1.1rem",marginLeft:"1.5rem" }} onClick={() => handleDelete(prod._id)}>Supprimer</Button>{' '}
                 </div>
               </div>
             </div>

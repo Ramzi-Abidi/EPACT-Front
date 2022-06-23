@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { listProducts } from '../actions/productAction';
 import LoadingBox from './LoadingBox';
 import MessageBox from './MessageBox';
 import { useHistory } from "react-router-dom";

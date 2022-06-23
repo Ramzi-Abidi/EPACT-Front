@@ -28,9 +28,7 @@ const CommentScreen = () => {
     const postId = useParams().id;
 
     const handlePostComment = () => {
-        if (!localStorage.getItem("userInfo")) {
-            history.push("/signin");
-        }
+        
         // const commenter = JSON.parse(localStorage.getItem("userInfo").name);
         setTextBtn("loading...");
 
@@ -68,6 +66,11 @@ const CommentScreen = () => {
     };
 
     useEffect(() => {
+        if (!JSON.parse(localStorage.getItem("userInfo"))) {
+            history.push("/signin");
+        }
+
+        
         fetch(`http://102.219.178.49:5000/api/comments/allComments/${postId}`)
         .then((res) => {
             setLoadingComments(true);

@@ -51,11 +51,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MTable({ orders, loading }) {
-
     const classes = useStyles();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
-
+    
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -70,8 +69,6 @@ function MTable({ orders, loading }) {
             
             <TableContainer component={Paper} className={classes.tableContainer}>
                 <Table className={classes.table} aria-label="simple table">
-
-
                     <TableHead>
                         <TableRow>
                             <TableCell className={classes.tableHeaderCell}>User Info</TableCell>

@@ -60,7 +60,7 @@ const ShippinngAdress = () => {
           </div>
 
           <div class="input-container">
-            <input type="text" class="input" placeholder='Numèro de Tel :' value={numTel} onChange={(e) => setNumTel(e.target.value)} />
+            <input type="text" class="input" placeholder='Numèro de Tel :' value={numTel} onChange={(e) => setNumTel(e.target.value)} required />
         
           </div>
   

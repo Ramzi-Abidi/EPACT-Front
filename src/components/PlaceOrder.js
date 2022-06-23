@@ -54,8 +54,8 @@ const PlaceOrder = () => {
 
       <div clasName="container">
         <CheckoutSteps step1="active" step2="active" step3="active" />
-        <div className='row-top' style={{ display: "flex", margin: "1rem 5.5rem" }}>
-          <div className='col-2' style={{ width: "100%" }}>
+        <div className='row-top' style={{ display: "flex", margin: "1rem auto",justifyContent:"center",alignItems:"center" }}>
+          <div className='col-2' style={{ width: "65%" }}>
             <ul style={{ padding: "1.5rem" }}>
               <li>
                 <div className='card card-body'>
@@ -114,21 +114,21 @@ const PlaceOrder = () => {
             </ul>
           </div>
 
-          <div className="col-1" style={{ height: "70%", width: "40%", marginLeft: "6rem" }}>
+          <div className="col-1" style={{ height: "70%",marginTop:"3.5rem" , alignSelf:"self-start",width:"35%",padding:"1.2rem"}}>
             <div className="card card-body">
-              <ul style={{width:"75%"}}>
+              <ul style={{margin:"0 auto",padding:"0"}}>
                 <li>
-                  <h2>Les détails de l'ordre</h2>
+                  <h2>Les détails de l'ordre : </h2>
                 </li>
                 <li>
-                  <div className="" style={{display:"flex",justifyContent:"space-between", margin:"1.2rem 0"}}>
+                  <div className="" style={{ display: "flex", justifyContent: "space-between", margin: "1.2rem 0" }}>
                     <strong>Items : </strong>
                     <div>{cart.itemsPrice.toFixed(2)} dt</div>
                   </div>
                 </li>
 
                 <li>
-                  <div className="" style={{display:"flex",justifyContent:"space-between"}}>
+                  <div className="" style={{ display: "flex", justifyContent: "space-between" }}>
                     <div>
                       <strong> Prix Total : {' '} </strong>
                     </div>

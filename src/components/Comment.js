@@ -6,6 +6,7 @@ import ReplyComment from './ReplyComment';
 import img1 from "../images/6556721_avatar_man_person_user_woman_icon.png";
 import badge from "../images/check.png";
 import LoadingBox from './LoadingBox';
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -14,12 +15,14 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
     const [replyContent, setReplyContent] = useState("");
     const [replies, setReplies] = useState([]);
     const [loading, setLoading] = useState(false);
-
     let isRendered = useRef(false);
-    //    let arr = [];
+
+    let history = useHistory() ;
 
     useEffect(() => {
-
+        if(!JSON.parse(localStorage.getItem("userInfo"))) {
+            history.push("/signin");
+        }
         /*fetch(`http://localhost:5000/api/replies/allReplies/${commentId}`)
             .then((res) => {
                 return res.json();
@@ -65,6 +68,10 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
     };
 
     const handleReply = (id) => {
+        if(!JSON.parse(localStorage.getItem("userInfo"))) {
+            history.push("/signin");
+        }
+
         setShowReplySec(!showReplySec);
 
         // const commenter = JSON.parse(localStorage.getItem("userInfo").name);

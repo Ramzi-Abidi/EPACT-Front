@@ -27,7 +27,7 @@ const Orders = () => {
                 return res.json();
             })
             .then((data) => {
-                setOrders(data);
+                setOrders(data.reverse());
                 //console.log(data);
                 setLoading(false);
 
@@ -41,7 +41,7 @@ const Orders = () => {
 
     return (
         <div className="tableContainer">
-            {loading && <LoadingBox> fetching orders ... </LoadingBox>}
+            {loading && <LoadingBox></LoadingBox>}
 
             <div class="wrapp">
                 <div class="search">
