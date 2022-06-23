@@ -1206,6 +1206,7 @@ i.fa-solid {
     height: auto;
   }
   .links {
+    display:none ;
     color: #fff !important;
   }
   .second {
@@ -1226,6 +1227,12 @@ i.fa-solid {
   }
 }
 @media screen and (max-width: 768px){
+  .site-desc article h2 {
+    padding-left: 2rem;
+  }
+.para-container  {
+  padding-left: 0;
+}
   .div{
     width: 100% !important;
   }

@@ -127,7 +127,8 @@ const Header = ({ userInfo }) => {
         <ul style={{ display: "flex", alignItems: "center" }}>
 
           <li>
-            <Link to="/cart" className='links'><img src={basket} style={{ width: "2.7rem" }} />
+            <Link to="/cart" className='links'>
+              <img src={basket} style={{ width: "2.7rem" }} />
               {cartItems.length > 0 ? <span className='badge'> {cartItems.length} </span> : <span className='badge'> 0 </span>}
             </Link>
           </li>
@@ -135,14 +136,19 @@ const Header = ({ userInfo }) => {
             <Link to="/" className='links'>Accueil</Link>
           </li>
           <li>
-
             <Link to="/contact" className='links'>Contact</Link>
           </li>
           <li>
-
             <Link to="/aboutUs" className='links'>à propos</Link>
           </li>
           {/*<Link to="/signin" className='links'>Sign In</Link>*/}
+          {!userInfo && (
+          <>
+            <Link to="signin" className='links'> Sign In </Link>
+            <Link to="/signup" className='links'>Sign Up</Link>
+          </>
+        )
+        }
         </ul>
 
         {
@@ -167,13 +173,7 @@ const Header = ({ userInfo }) => {
 
 
         {/* */}
-        {!userInfo && (
-          <>
-            <Link to="signin" className='links'> Sign In </Link>
-            <Link to="/signup" className='links'>Sign Up</Link>
-          </>
-        )
-        }
+
 
 
         {userInfo && userInfo.isAdmin && (

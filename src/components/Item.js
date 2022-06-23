@@ -18,7 +18,7 @@ export default () => {
     const handleCommentClick = (post) => {
 
         if (!JSON.parse(localStorage.getItem("userInfo"))) {
-            swal("Error", "You should sign in first", "warning");
+            swal("Error", "Vous devez d'abord vous connecter", "warning");
             history.push(`/signin`);
             return;
         }
