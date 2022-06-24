@@ -1304,12 +1304,7 @@ flex-direction: column;
   .contact-info:before {
     display: none;
   }
-
-  .para-container {
-    padding-left: 2.5rem;
-  }
   .site-desc article h2 {
-    padding-left: 5rem;
     margin-top: 3rem;
   }
   .text-container p {

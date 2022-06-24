@@ -71,11 +71,11 @@ function MTable({ orders, loading }) {
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell className={classes.tableHeaderCell}>User Info</TableCell>
+                            <TableCell className={classes.tableHeaderCell}>Infos</TableCell>
                             <TableCell className={classes.tableHeaderCell}>Email</TableCell>
-                            <TableCell className={classes.tableHeaderCell}>Num Tel</TableCell>
+                            <TableCell className={classes.tableHeaderCell}>Num Tél</TableCell>
                             <TableCell className={classes.tableHeaderCell}>Items Info</TableCell>
-                            <TableCell className={classes.tableHeaderCell}>Total Price</TableCell>
+                            <TableCell className={classes.tableHeaderCell}>Prix Total</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

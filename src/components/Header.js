@@ -112,7 +112,7 @@ const Header = ({ userInfo }) => {
               <Link to="/productlist" className='links' onClick={handleMenuClick}>Ajouter Produit</Link>
               <Link to="/orders" className='links' onClick={handleMenuClick}>Commandes</Link>
               {/*               <Link to="/userlist" className='links' onClick={handleMenuClick}>Users</Link> */}
-              <Link to="/profile" className='links' onClick={handleMenuClick}> {userInfo.isAdmin ? "Admin" : "User"} Profile</Link>
+              <Link to="/profile" className='links' onClick={handleMenuClick}>Profile</Link>
               <Link to="/post" className='links' onClick={handleMenuClick}>Publier quelque chose</Link>
               <Link to="#" onClick={signoutHandler} className='links' >
                 Sign Out
@@ -125,7 +125,6 @@ const Header = ({ userInfo }) => {
 
       <div className='second' style={{ display: "flex", alignItems: "center" }}>
         <ul style={{ display: "flex", alignItems: "center" }}>
-
           <li>
             <Link to="/cart" className='links firstLinks'>
               <img src={basket} style={{ width: "2.7rem" }} />
@@ -183,9 +182,6 @@ const Header = ({ userInfo }) => {
               <i className="fa fa-caret-down"></i>
             </Link>
             <ul className="dropdown-content">
-              {/* <li style={{ marginTop: ".5rem" }}>
-                <Link to="/dashboard" style={{ color: "#FFF", fontSize: "13px" }}>Dashboard</Link>
-              </li> */}
               <li style={{ marginTop: ".5rem" }}>
                 <Link to="/productlist" style={{ color: "#FFF", fontSize: "13px" }}>Ajouter produit</Link>
               </li>

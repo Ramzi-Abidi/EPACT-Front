@@ -13,7 +13,8 @@ const Orders = () => {
         setSearch(ch);
 
         let newOrders = orders.filter((order) => {
-            return order.shippingAddress.fullName.includes(ch);
+            if(order.shippingAddress.fullName.toUpperCase().includes(ch.toUpperCase()))
+                return order.shippingAddress.fullName ;
         });
         console.log(newOrders);
 
