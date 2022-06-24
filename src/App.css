@@ -1205,9 +1205,15 @@ i.fa-solid {
 
     height: auto;
   }
-  .links {
+  .firstLinks {
     display:none ;
+
+  }
+  .links {
     color: #fff !important;
+  }
+  .noHover {
+    display: none;
   }
   .second {
     display: none;
