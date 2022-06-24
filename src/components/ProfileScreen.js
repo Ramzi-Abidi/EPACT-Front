@@ -75,7 +75,7 @@ export default function ProfileScreen() {
                                 <input
                                     id="name"
                                     type="text"
-                                    placeholder="Enter name"
+                                    placeholder="Nom d'utilisateur"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     className="input"
@@ -86,7 +86,7 @@ export default function ProfileScreen() {
                                 <input
                                     id="email"
                                     type="email"
-                                    placeholder="Enter email"
+                                    placeholder="Email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="input"
@@ -98,7 +98,7 @@ export default function ProfileScreen() {
                                 <input
                                     id="password"
                                     type="password"
-                                    placeholder="Enter password"
+                                    placeholder="Mot de passe"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     className="input"
@@ -111,7 +111,7 @@ export default function ProfileScreen() {
                                 <input
                                     id="confirmPassword"
                                     type="password"
-                                    placeholder="Enter confirm password"
+                                    placeholder="Confirmer mot de passe"
                                     value={confirmPassword}
                                     onChange={(e) => setConfirmPassword(e.target.value)}
                                     className="input"
@@ -120,7 +120,7 @@ export default function ProfileScreen() {
                                 <div className="input-container" style={{display:"flex", flexFlow:"row-reverse"}}>
 
                             <button className="btn btn-outline-primary signup" type="submit" style={{marginRight:"3rem"}}>
-                                Update
+                                Modifier
                             </button>
                                 </div>
                         </div>

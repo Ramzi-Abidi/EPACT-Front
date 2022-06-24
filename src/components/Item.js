@@ -4,6 +4,7 @@ import { AiOutlineComment, AiOutlineEdit, AiTwotoneDelete } from "react-icons/ai
 import swal from "sweetalert";
 import MessageBox from './MessageBox';
 import adminLogo from "../images/user (1).png";
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 // Import Swiper styles
 
@@ -49,7 +50,7 @@ export default () => {
         setPosts(arr);
         //        console.log(id);
 
-        fetch('http://102.219.178.49:5000/api/posts/' + id, {
+        fetch('http://localhost:5000/api/posts/' + id, {  //102.219.178.49:5000
             method: 'DELETE',
         })
             .then(res => {
@@ -70,9 +71,13 @@ export default () => {
 
     return (
 
-        <Swiper style={{ marginTop: "6rem" }}
+        <Swiper style={{ margin: "4rem .6rem" ,padding:"2.5rem 1rem",}}
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={30}
             slidesPerView={3}
+            navigation
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
         >
@@ -81,9 +86,9 @@ export default () => {
                     return (
 
                         <SwiperSlide>
-                            <div class="card border-primary mb-3" style={{ "maxWidth": "48rem" }} key={post._id} >
+                            <div class="card border-primary mb-3" style={{ minHeight: "400px" }} key={post._id} >
                                 <div class="card-header" style={{ padding: "1.5rem" }}>
-                                   {/*  <img src={adminLogo} alt="logo" style={{ width: "3rem", marginRight: ".7rem" }} /> */}
+                                    {/*  <img src={adminLogo} alt="logo" style={{ width: "3rem", marginRight: ".7rem" }} /> */}
                                     {/* <b> Admin</b> */}
                                     <h4 class="card-title"> <b> {post.title} </b> </h4>
 

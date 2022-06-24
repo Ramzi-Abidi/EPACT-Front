@@ -219,8 +219,12 @@ img.large {
   width: 90%;
 }
 img.small {
-  max-width: 5rem;
+  max-width: 10.5rem;
   width:100%;
+}
+.customized-btn:focus {
+  border:none !important;
+  outline: 0 !important;
 }
 .col-2 {
   margin-top: 2rem;
@@ -367,13 +371,10 @@ ul {
     transition: .25s all ease;
     cursor: pointer;
 }
-
 .underlined {
   text-align: center;
   color: #333;
-  text-transform: capitalize;
   position: relative;
-
 }
 .second {
   height: 100% !important;
@@ -865,7 +866,7 @@ label {
   text-align: center;
   width: 20px;
   top: 5px;
-  right: 5px;
+  right: 8px;
   height: 18px;
 }
 
@@ -903,8 +904,8 @@ i.fa-solid {
   font-weight: bold;
 }
 .checkout-steps > div.activeStep {
-  border-top-color: #f08000;
-  color: #f08000;
+  border-top-color: var(--third-color);
+  color: var(--third-color);
 }
 /*about section : */
 
@@ -914,7 +915,6 @@ i.fa-solid {
   justify-content: center;
   align-items: center;
   margin-top: 6rem;
-  
   width:104%;
 }
 .background-container{
@@ -933,14 +933,15 @@ i.fa-solid {
 .commentButton {
   align-self: end;
     border-radius: 20px !important; 
-    background: #256bb9;
+    background: #0d9d61;
     /* font-size: 15px; */
     padding: 1rem;
   margin-left:.6rem !important ;
   transition: .5s;
 }
+
 .commentButton:hover {
-  background: #163d69 !important; 
+  background: #08623d !important; 
 }
 .reply {
   align-self: end;
@@ -1192,8 +1193,15 @@ i.fa-solid {
   margin-left: 2rem;
   margin-top: 5rem;
 }
+.swiper-scrollbar {
+  margin-top: 2rem;
+  bottom:0;
+}
 /**/
 @media (max-width:992px) {
+  .swiper-scrollbar,.swiper-button-next {
+    display: none;
+  }
   .site-desc{
     margin-top: 0; 
    } 

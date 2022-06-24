@@ -64,13 +64,7 @@ const Home = () => {
 							De plus, notre projet vise à améliorer la qualité et à étendre la durée de conservation du lait et de la viande. De plus, cela va encourager les jeunes éleveurs à investir dans le domaine de l'élevage..
 						</p>
 					</div>
-					{
-						!localStorage.getItem("userInfo") &&
-						<section className='third-sec'>
-							<button className='btn-home' onClick={() => handleClick("signup")}>Signup</button>
-							<button className='btn-home' onClick={() => handleClick("signin")}>Login</button>
-						</section>
-					}
+					
 				</article>
 
 			</section>
@@ -78,7 +72,7 @@ const Home = () => {
 			<div className="row center">
 
 				<section section className='second-section'>
-					<h3 className='underlined'>Nos Produits</h3>
+					<h3 className='underlined'>Nos produits</h3>
 					{
 						loading ? <LoadingBox />
 							:
@@ -92,7 +86,7 @@ const Home = () => {
 			</div>
 
 			<section className='news'>
-				<h3 className='underlined'> Les Dernières Actualités </h3>
+				<h3 className='underlined'> Les dernières actualités </h3>
 
 				<Item />
 			</section>

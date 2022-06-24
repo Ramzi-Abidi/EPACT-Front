@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Image from "../images/Asset 1.png";
 import { useHistory } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
-import basket from "../images/8213360_shopping_shop_ecommerce_cart_bag_icon.png";
+import basket from "../images/2613917_basket_cart_shop_shopping_icon.png";
 
 const Header = ({ userInfo }) => {
 
@@ -49,7 +49,7 @@ const Header = ({ userInfo }) => {
   return (
     <header className="row" color='#333' style={{ width: "100%" }}>
       <div className='first'>
-        <div className='img-container'>
+        <div className='img-container' style={{width:"35%"}}>
           <img src={Image} onClick={handleClick} />
         </div>
       </div>
@@ -76,7 +76,10 @@ const Header = ({ userInfo }) => {
             </Link>
           }
 
-          <Link to="/cart" className='links' onClick={handleMenuClick}><img src={basket} style={{ width: "2.7rem" }} />
+          <Link to="/cart" className='links' onClick={handleMenuClick}>
+
+            {/* <i class="fa-solid fa-basket-shopping"></i> */}
+            <img src={basket} style={{ width: "2.9rem" }} />
             {cartItems.length > 0 ? <span className='badge'> {cartItems.length} </span> : <span className='badge'> 0 </span>}
           </Link>
 
@@ -89,9 +92,9 @@ const Header = ({ userInfo }) => {
 
               <>
 
-                <Link to="/profile" className="links" onClick={handleMenuClick}>User Profile</Link>
+                <Link to="/profile" className="links" onClick={handleMenuClick}>Mon compte</Link>
                 <Link to="#" onClick={signoutHandler} className="links">
-                  Sign Out
+                  Déconnexion
                 </Link>
               </>
             )
@@ -100,8 +103,8 @@ const Header = ({ userInfo }) => {
           {
             !userInfo && (
               <>
-                <Link to="signin" className='links' onClick={handleMenuClick}> Sign In </Link>
-                <Link to="/signup" className='links' onClick={handleMenuClick}>Sign Up</Link>
+                <Link to="signin" className='links' onClick={handleMenuClick}> Se connecter </Link>
+                <Link to="/signup" className='links' onClick={handleMenuClick}>S'inscrire</Link>
               </>
             )
           }
@@ -112,9 +115,9 @@ const Header = ({ userInfo }) => {
               <Link to="/productlist" className='links' onClick={handleMenuClick}>Ajouter Produit</Link>
               <Link to="/orders" className='links' onClick={handleMenuClick}>Commandes</Link>
               {/*               <Link to="/userlist" className='links' onClick={handleMenuClick}>Users</Link> */}
-              <Link to="/profile" className='links' onClick={handleMenuClick}>Profile</Link>
+              <Link to="/profile" className='links' onClick={handleMenuClick}>Mon compte</Link>
               <Link to="/post" className='links' onClick={handleMenuClick}>Publier quelque chose</Link>
-              <Link to="#" onClick={signoutHandler} className='links' >
+              <Link to="#" onClick={signoutHandler} className='links'>
                 Sign Out
               </Link>
             </>
@@ -127,7 +130,9 @@ const Header = ({ userInfo }) => {
         <ul style={{ display: "flex", alignItems: "center" }}>
           <li>
             <Link to="/cart" className='links firstLinks'>
-              <img src={basket} style={{ width: "2.7rem" }} />
+
+            <img src={basket} style={{ width: "2.9rem" }} />
+
               {cartItems.length > 0 ? <span className='badge'> {cartItems.length} </span> : <span className='badge'> 0 </span>}
             </Link>
           </li>
@@ -142,12 +147,11 @@ const Header = ({ userInfo }) => {
           </li>
           {/*<Link to="/signin" className='links'>Sign In</Link>*/}
           {!userInfo && (
-          <>
-            <Link to="signin" className='links firstLinks'> Sign In </Link>
-            <Link to="/signup" className='links firstLinks'>Sign Up</Link>
-          </>
-        )
-        }
+            <>
+              <Link to="signin" className='links firstLinks'>Se connecter</Link>
+            </>
+          )
+          }
         </ul>
 
         {
@@ -158,11 +162,11 @@ const Header = ({ userInfo }) => {
               </Link>
               <ul className="dropdown-content">
                 <li>
-                  <Link to="/profile" style={{ color: "#FFF", fontSize: "13px" }}>User Profile</Link>
+                  <Link to="/profile" style={{ color: "#FFF", fontSize: "13px" }}>Mon compte</Link>
                 </li>
                 <li >
                   <Link to="#" onClick={signoutHandler} style={{ color: "#FFF", fontSize: "13px", marginTop: "15px" }} >
-                    Sign Out
+                    Déconnexion
                   </Link>
                 </li>
               </ul>
@@ -192,14 +196,14 @@ const Header = ({ userInfo }) => {
                 <Link to="/userlist" style={{ color: "#FFF", fontSize: "13px" }}>Users</Link>
               </li> */}
               <li style={{ marginTop: "1rem" }}>
-                <Link to="/profile" style={{ color: "#FFF", fontSize: "13px" }}> {userInfo.isAdmin ? "Admin" : "User"} Profile</Link>
+                <Link to="/profile" style={{ color: "#FFF", fontSize: "13px" }}> Mon compte</Link>
               </li>
               <li style={{ marginTop: "1rem" }}>
                 <Link to="/post" style={{ color: "#FFF", fontSize: "13px" }}>Publier</Link>
               </li>
               <li style={{ marginTop: "1rem" }}>
                 <Link to="#signout" onClick={signoutHandler} style={{ color: "#FFF", fontSize: "13px" }}>
-                  Sign Out
+                  Déconnexion
                 </Link>
               </li>
             </ul>

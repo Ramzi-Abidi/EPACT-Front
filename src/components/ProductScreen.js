@@ -52,7 +52,7 @@ const ProductScreen = (props) => {
                   </div>
                   <div className="col-1 ">
                     <div className='card card-body'>
-                      <ul>
+                      <ul style={{paddingLeft:"0",margin:"1.2rem"}}>
                         <li style={{display:"flex"}}>
                           <h4 className='title'> <b>Nom :</b> </h4>  <h4 style={{marginLeft:"1rem",marginBottom:"0"}}>{product.name} </h4>
                         </li>
@@ -66,7 +66,7 @@ const ProductScreen = (props) => {
                   </div>
                   <div className="col-1">
                     <div className='card card-body'>
-                      <ul>
+                      <ul style={{paddingLeft:"0",margin:"1.2rem"}}>
                         <li>
                           <div className='content'>
                             <h4 className='title2'>Prix : </h4>
@@ -75,7 +75,7 @@ const ProductScreen = (props) => {
                         </li>
                         <li>
                           <div className='content'>
-                            <h4 style={{ margin: "1.7rem 0" }}>Qty:</h4>
+                            <h4 style={{ margin: "1.7rem 0" }}>Qte:</h4>
                             <div className=''>
                               <div class="form-group">
                                 <select class="form-select" style={{ margin: "1.7rem 0" }} id="exampleSelect1" onChange={(e)=>setQty(e.target.value)}>
@@ -87,7 +87,7 @@ const ProductScreen = (props) => {
                             </div>
                           </div>
                           <li className='btn-container'>
-                            <button className='btn btn-warning' onClick={handleAddToCart}>
+                            <button className='btn btn-warning' onClick={handleAddToCart} style={{background:"#049A5B", border:"none",padding:".6rem"}}>
                               Ajouter au panier
                             </button>
                           </li>

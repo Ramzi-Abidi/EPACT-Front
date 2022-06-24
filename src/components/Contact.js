@@ -68,7 +68,7 @@ const Contact = () => {
 
           <div class="info">
             <div className="information">
-              <p><strong style={{marginRight:"2.4rem"}}> Email : </strong> <a href="mailto:siwarbenkraeim1@gmail.com">siwarbenkraeim1@gmail.com</a></p>
+              <p><strong style={{marginRight:"2.4rem"}}> Email : </strong> <a href="mailto:epacttunisie@gmail.com">siwarbenkraeim1@gmail.com</a></p>
             </div>
             <div className="information">
               <img src="img/phone.png" class="icon" alt="" />
@@ -82,9 +82,7 @@ const Contact = () => {
               <a href="https://www.facebook.com/EPACTTunsie/" target={"_blank"}>
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <Link to="#">
-                <i class="fab fa-instagram"></i>
-              </Link>
+             
             </div>
           </div>
         </div>

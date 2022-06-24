@@ -54,7 +54,7 @@ const PlaceOrder = () => {
 
       <div clasName="container">
         <CheckoutSteps step1="active" step2="active" step3="active" />
-        <div className='row-top' style={{ display: "flex", margin: "1rem auto",justifyContent:"center",alignItems:"center" }}>
+        <div className='row-top' style={{ display: "flex", margin: "1rem auto", justifyContent: "center", alignItems: "center" }}>
           <div className='col-2' style={{ width: "65%" }}>
             <ul style={{ padding: "1.5rem" }}>
               <li>
@@ -114,9 +114,9 @@ const PlaceOrder = () => {
             </ul>
           </div>
 
-          <div className="col-1" style={{ height: "70%",marginTop:"3.5rem" , alignSelf:"self-start",width:"35%",padding:"1.2rem"}}>
+          <div className="col-1" style={{ height: "70%", marginTop: "3.5rem", alignSelf: "self-start", width: "35%", padding: "1.2rem" }}>
             <div className="card card-body">
-              <ul style={{margin:"0 auto",padding:"0"}}>
+              <ul style={{ margin: "0 auto", padding: "0" }}>
                 <li>
                   <h2>Les détails de l'ordre : </h2>
                 </li>
@@ -139,13 +139,13 @@ const PlaceOrder = () => {
                 </li>
                 <li>
                   <button
-                    style={{ width: "100%", height: "42px", marginTop: "1.5rem", background: "#f08000", border: "none", color: "#fff" }}
+                    style={{ width: "100%", height: "42px", marginTop: "1.5rem", background: "#049A5B", border: "none", color: "#fff",fontSize:"15px" }}
                     type="button"
                     onClick={placeOrderHandler}
                     className="primary block btn"
                     disabled={cart.cartItems.length === 0}
                   >
-                    Place Order
+                    Passer la commande
                   </button>
                 </li>
                 {loading && <LoadingBox></LoadingBox>}

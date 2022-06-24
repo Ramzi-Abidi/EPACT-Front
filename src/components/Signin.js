@@ -66,15 +66,15 @@ const Signin = (props) => {
             <h3 class="title" style={{ color: "#fff" }}>Sign in</h3>
 
             <div class="input-container">
-              <input type="email" name="email" class="input" placeholder='email' onChange={(e) => setEmail(e.target.value)} required />
+              <input type="email" name="email" class="input" placeholder='Email' onChange={(e) => setEmail(e.target.value)} required />
               <span>Email</span>
             </div>
             <div class="input-container">
-              <input type="password" name="password" class="input" placeholder='password' onChange={(e) => setPassword(e.target.value)} required minLength={6} maxLength={15} />
+              <input type="password" name="password" class="input" placeholder='Mot de passe' onChange={(e) => setPassword(e.target.value)} required minLength={6} maxLength={15} />
               <span>password</span>
             </div>
             <div className='input-container1' style={{ bottom: "9rem" }}>
-              <input type="submit" value="Login" class="btn btn-outline-primary signup" style={{ width: "11rem", height: "40px" }} />
+              <input type="submit" value="Se connecter" class="btn btn-outline-primary signup" style={{ width: "11rem", height: "40px" }} />
               <div style={{color:"#fff"}}>
                 Nouveau client ? <Link to="/signup"> Créez un nouveau compte </Link>
               </div>

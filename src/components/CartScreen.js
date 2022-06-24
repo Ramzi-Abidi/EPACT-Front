@@ -36,10 +36,10 @@ const CartScreen = (props) => {
         <div style={{ marginTop: "5.5rem", height: "60vh", padding: "0 3rem" }}>
             <div className="row top" style={{ marginTop: "9rem" }}>
                 <div className="col-2">
-                    <h1 style={{ marginBottom: "1.5rem" }}>Shopping Cart</h1>
+                    <h1 style={{ marginBottom: "1.5rem" }}>Panier</h1>
                     {cartItems.length === 0 ? (
                         <MessageBox>
-                            Cart is empty. <Link to="/" style={{color:"#2780e3"}}>Go Shopping</Link>
+                            Le panier est vide. <Link to="/" style={{color:"#2780e3"}}>Go Shopping</Link>
                         </MessageBox>
                     ) : (
                         <ul>
@@ -72,6 +72,7 @@ const CartScreen = (props) => {
                                             <div class="form-group" style={{margin:"0 2rem"}}>
                                                 <select class="form-select"
                                                     value={item.qty}
+                                                    style={{height:"35px",width:"60px"}}
                                                     onChange={(e) =>
                                                         dispatch(
                                                             addToCart(item.product, Number(e.target.value))
@@ -86,12 +87,12 @@ const CartScreen = (props) => {
                                         {/* <div>{item.price}dt</div> */}
                                         <div>
                                             <button
-                                                style={{ background: "#ff5722", margin: "0.5rem", width: "60px", height: "30px",color:"#fff" }}
+                                                style={{ background: "rgb(247 37 21)",fontSize:"15px", margin: "0.5rem",color:"#fff",border:"none",padding:".6rem" }}
                                                 type="button"
-                                                className='btn btn-warning'
+                                                className='btn btn-warning customized-btn'
                                                 onClick={() => removeFromCartHandler(item.product)}
                                             >
-                                                Delete
+                                                Supprimer
                                             </button>
                                         </div>
                                     </div>
@@ -104,7 +105,7 @@ const CartScreen = (props) => {
                     <div className="card card-body">
                         <ul>
                             <h2>
-                                Subtotal ({cartItems.reduce((a, c) => a + Number(c.qty), 0)} produits) :
+                                total ({cartItems.reduce((a, c) => a + Number(c.qty), 0)} produits) : {' '}
                                 {
                                     cartItems.reduce((a, c) => Number(a) + Number(c.price) * Number(c.qty), 0)
                                 }
@@ -113,10 +114,11 @@ const CartScreen = (props) => {
                             <button
                                 type="button"
                                 onClick={checkoutHandler}
-                                className="btn btn-outline-warning"
+                                className="btn btn-outline-warning customized-btn"
+                                style={{background:"#049A5B", border:"none",color:"#fff",fontSize:"15px",padding:".6rem"}}
                                 disabled={cartItems.length === 0}
                             >
-                                Proceed to Checkout
+                                Passer à la caisse
                             </button>
                         </ul>
                     </div>

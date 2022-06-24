@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { FaUser } from 'react-icons/fa';
 import { useHistory, useParams } from 'react-router-dom';
 import swal from 'sweetalert';
 import Comment from './Comment';
 import LoadingBox from './LoadingBox';
 import MessageBox from './MessageBox';
-import ReplyComment from './ReplyComment';
 
 const CommentScreen = () => {
 
@@ -28,7 +26,13 @@ const CommentScreen = () => {
     const postId = useParams().id;
 
     const handlePostComment = () => {
-        
+        if (!commentContent) {
+            swal("erreur", "le commentaire est vide", "warning").then(()=>{
+                setTextBtn("Commenter ce contenu");
+              
+            });
+        }
+
         // const commenter = JSON.parse(localStorage.getItem("userInfo").name);
         setTextBtn("loading...");
 
@@ -49,19 +53,16 @@ const CommentScreen = () => {
             .then((data) => {
                 setLoadingPost(false);
                 setTextBtn("Commenter ce contenu");
-                // setTextArea("");
-                // setTextTitle("");
                 console.log(data);
                 setComments([...comments, data.createdComment]);
                 console.log(comments);
-
                 setCommentContent("");
                 return data;
             })
             .catch((err) => {
                 swal("oops!", "erreur", "warning");
                 console.log(err);
-                setTextBtn("Commenter") ;
+                setTextBtn("Commenter ce contenu");
             })
     };
 
@@ -70,24 +71,24 @@ const CommentScreen = () => {
             history.push("/signin");
         }
 
-        
-        fetch(`http://102.219.178.49:5000/api/comments/allComments/${postId}`)
-        .then((res) => {
-            setLoadingComments(true);
-            return res.json();
-        })
-        .then((data) => {
-            console.log(data);
 
-            setComments(data);
-            setLoadingComments(false);
-            return data;
-        })
-        .catch((err) => {
-            setLoadingComments(false);
-            setCommentErrors("erreur lors du chargement des commentaires");
-            console.log(err);
-        })
+        fetch(`http://102.219.178.49:5000/api/comments/allComments/${postId}`)
+            .then((res) => {
+                setLoadingComments(true);
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+
+                setComments(data);
+                setLoadingComments(false);
+                return data;
+            })
+            .catch((err) => {
+                setLoadingComments(false);
+                setCommentErrors("erreur lors du chargement des commentaires");
+                console.log(err);
+            })
 
         //document.querySelector(".commentTextArea").focus();
         fetch(`http://102.219.178.49:5000/api/comments/${postId}`)

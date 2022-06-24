@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import swal from 'sweetalert';
 import img from "../images/403017_avatar_default_head_person_unknown_icon.png";
-import MessageBox from './MessageBox';
-import ReplyComment from './ReplyComment';
 import img1 from "../images/6556721_avatar_man_person_user_woman_icon.png";
 import badge from "../images/check.png";
 import LoadingBox from './LoadingBox';
@@ -12,15 +10,16 @@ import { useHistory } from 'react-router-dom';
 
 const Comment = ({ comment, setComments, comments, textBtn, postId, commentId }) => {
     const [showReplySec, setShowReplySec] = useState(false);
+    const [toggleRespond, setToggleRespond] = useState(false);
     const [replyContent, setReplyContent] = useState("");
     const [replies, setReplies] = useState([]);
     const [loading, setLoading] = useState(false);
     let isRendered = useRef(false);
 
-    let history = useHistory() ;
+    let history = useHistory();
 
     useEffect(() => {
-        if(!JSON.parse(localStorage.getItem("userInfo"))) {
+        if (!JSON.parse(localStorage.getItem("userInfo"))) {
             history.push("/signin");
         }
         /*fetch(`http://localhost:5000/api/replies/allReplies/${commentId}`)
@@ -45,9 +44,6 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
                 return res.json();
             })
             .then((data) => {
-                //arr = data;
-                //console.log(arr.replies);
-                //setReplies(arr.replies);
                 console.log(data);
                 setReplies(data.replies);
                 console.log(replies);
@@ -64,11 +60,12 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
     }, [])
 
     const handle = () => {
+        setToggleRespond(!toggleRespond) ;
         setShowReplySec(!showReplySec);
     };
 
     const handleReply = (id) => {
-        if(!JSON.parse(localStorage.getItem("userInfo"))) {
+        if (!JSON.parse(localStorage.getItem("userInfo"))) {
             history.push("/signin");
         }
 
@@ -110,7 +107,7 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
         let arr1 = replies.filter((reply) => {
             return reply.commentId !== id;
         });
-        setReplies(arr1) ; 
+        setReplies(arr1);
 
         let arr = comments.filter((comment) => {
             return comment._id !== id;
@@ -172,19 +169,20 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
                     </div>
                     <div style={{ fontSize: "16px", paddingLeft: "3rem", margin: "2rem" }}> <p> {comment.commentContent}  </p> </div>
                 </div>
-                <div style={{ display: "flex", flexDirection: "row-reverse" }}>
-                    {(JSON.parse(localStorage.getItem("userInfo")).isExpert || JSON.parse(localStorage.getItem("userInfo")).isAdmin )  &&
-                        <div>
-                            <button type="button" class="btn btn-outline-secondary reply" onClick={handle}>Répondre</button>
-                        </div>
-                    }
+                <div style={{ display: "flex" , flexDirection:"column"}}>
+                    <div style={{display:"flex",alignSelf:"flex-end"}}>
+                        {(JSON.parse(localStorage.getItem("userInfo")).isExpert || JSON.parse(localStorage.getItem("userInfo")).isAdmin) &&
+                            <button type="button" class="btn btn-outline-secondary reply" onClick={handle}>{toggleRespond ? "Annuler commentaire" : "Répondre"}</button>
+                        }
+                        {JSON.parse(localStorage.getItem("userInfo")).email === comment.answerEmail && <button type="button" class="btn btn-outline-danger reply" onClick={() => handleDelete(comment._id)}  >Supprimer</button>}
+                    </div>
+
                     {
                         showReplySec && <div class="input-group mb-3 makeCommentSection div" style={{ marginTop: "3rem", width: "100%", marginLeft: "3rem" }}>
                             <textarea class="form-control commentTextArea" id="exampleTextarea" rows="3" placeholder='Répondre' value={replyContent} onChange={(e) => setReplyContent(e.target.value)} autoFocus ></textarea>
                             <button class="btn btn-primary commentButton" type="button" id="button-addon2" onClick={() => handleReply(comment._id)}> Répondre </button>
                         </div>
                     }
-                    {JSON.parse(localStorage.getItem("userInfo")).email === comment.answerEmail && <button type="button" class="btn btn-outline-danger reply" onClick={() => handleDelete(comment._id)}  >Supprimer</button>}
 
                 </div>
             </div>

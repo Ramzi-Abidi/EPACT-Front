@@ -52,7 +52,7 @@ const Signup = (props) => {
 
           <div class="info">
             <div class="information">
-              <p><strong style={{ marginRight: "2.4rem" }}> Email : </strong> <a href="mailto:siwarbenkraeim1@gmail.com">siwarbenkraeim1@gmail.com</a></p>
+              <p><strong style={{ marginRight: "2.4rem" }}> Email : </strong> <a href="mailto:epacttunisie@gmail.com">siwarbenkraeim1@gmail.com</a></p>
 
             </div>
             <div class="information">
@@ -81,11 +81,11 @@ const Signup = (props) => {
 
           <form autoComplete="on">
             {loading && <LoadingBox></LoadingBox>}
-            {error && <MessageBox variant={"danger"}> {error} </MessageBox>}
+            {error && <MessageBox variant={"danger"}> Ce compte existe déjà </MessageBox>}
             <h3 class="title" style={{ color: "#fff" }}>Sign up</h3>
 
             <div class="input-container">
-              <input type="text" class="input" placeholder='Nom' onChange={(e) => setName(e.target.value)} />
+              <input type="text" class="input" placeholder="Nom d'utilisateur" onChange={(e) => setName(e.target.value)} minLength={5} />
               <span>Nom</span>
             </div>
             <div class="input-container">
@@ -93,12 +93,12 @@ const Signup = (props) => {
               <span>Email</span>
             </div>
             <div class="input-container">
-              <input type="password" class="input" placeholder='Mot de passe' onChange={(e) => setPassword(e.target.value)} />
+              <input type="password" class="input" placeholder='Mot de passe' onChange={(e) => setPassword(e.target.value)} minLength={8} maxLength={12} />
               <span>Mot de passe</span>
             </div>
 
             <div class="input-container">
-              <input type="password" name="confirmPassword" class="input" placeholder='confirm password' onChange={(e) => setConfirmPassword(e.target.value)} />
+              <input type="password" name="Confirmer password" class="input" placeholder='confirm password' onChange={(e) => setConfirmPassword(e.target.value)} minLength={8} maxLength={12}/>
               <span>Confirmer le mot de passe</span>
             </div>
 
@@ -118,8 +118,8 @@ const Signup = (props) => {
             }
 
             <div className='input-container1'>
-              <input type="submit" value="Send" class="btn btn-outline-primary signup" style={{ width: "11rem", height: "40px" }} />
-              <div>
+              <input type="submit" value="Envoyer" class="btn btn-outline-primary signup" style={{ width: "11rem", height: "40px" }} />
+              <div style={{color:"#fff"}}>
                 Vous avez déjà un compte ? <Link to="/signin"> Sign In </Link>
               </div>
             </div>

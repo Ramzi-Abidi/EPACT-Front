@@ -91,6 +91,11 @@ function App() {
               </AnimatedPage>
             </Route>
 
+
+            <Route path="/tojrab">
+                <Tojrab />
+            </Route>
+
             <Route path="/product/:id" component={ProductScreen}>
             </Route>
 
