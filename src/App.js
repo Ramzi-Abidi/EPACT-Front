@@ -39,11 +39,12 @@ function App() {
 
       <div className="App">
 
-        <Switch>
-          <div className="grid-container">
-            <Header userInfo={userInfo} />
+        <div className="grid-container">
 
-            <main>
+          <Header userInfo={userInfo} />
+
+          <main>
+            <Switch>
 
               <Route path="/" exact>
                 <Home />
@@ -113,16 +114,16 @@ function App() {
               <Route exact path="/cart/:id?" component={CartScreen}>
               </Route>
 
-            </main>
-
-p
-            <Footer />
-
-
-          </div>
+              <Route path="*" component={PageNotFound} />
         </Switch>
+          </main>
+
+          <Footer />
+
 
       </div>
+
+    </div>
 
     </BrowserRouter >
 

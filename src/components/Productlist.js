@@ -19,7 +19,11 @@ const Productlist = () => {
 
   useEffect(() => {
     //verif if the user isn't authenticated or not an admin :
-    if (!localStorage.getItem("userInfo") || !JSON.parse(localStorage.getItem("userInfo")).isAdmin) {
+    if (!localStorage.getItem("userInfo")) {
+      history.push("/signin");
+    }
+    else
+      if(!JSON.parse(localStorage.getItem("userInfo")).isAdmin) {
       history.push("/signin");
     }
 

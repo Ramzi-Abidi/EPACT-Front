@@ -21,7 +21,10 @@ const CartScreen = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
- /*        if (!JSON.parse(localStorage.getItem("userInfo"))) {
+               if (!JSON.parse(localStorage.getItem("userInfo"))) {
+                  history.push("/signin");
+              }  
+       /*  if (JSON.parse(localStorage.getItem("cartItems")).length === 0) {
             history.push("/signin");
         } */
 
@@ -41,85 +44,85 @@ const CartScreen = (props) => {
     return (
         <AnimatedPage>
 
-        <div style={{ marginTop: "5.5rem", height: "60vh", padding: "0 3rem" }}>
-            <div className="row top" style={{ marginTop: "9rem" }}>
-                <div className="col-2">
-                    <h1 style={{ marginBottom: "1.5rem" }}>Panier</h1>
-                    {cartItems.length === 0 ? (
-                        <MessageBox>
-                            Le panier est vide. <Link to="/" style={{ color: "#2780e3" }}>Go Shopping</Link>
-                        </MessageBox>
-                    ) : (
-                        <ul>
-                            {cartItems.map((item) => (
-                                <li key={item._id}>
-                                    <div className="row">
-                                        <div>
-                                            <img
-                                                src={`http://102.219.178.49:5000/${item.image}`}
-                                                alt={item.name}
-                                                className="small"
-                                            ></img>
-                                        </div>
-                                        <div className="" style={{ margin: "0 2rem" }}>
-                                            <Link to={`/product/${item.product}`}>{item.name}</Link>
-                                        </div>
-                                        <div className=''>
-                                       
-                                            <div class="form-group" style={{ margin: "0 2rem" }}>
-                                               
-                                                <input type="number"
-                                                className="input-number"
-                                                value={item.qty}
-                                                onChange={(e) =>
-                                                    dispatch(
-                                                        addToCart(item.product, Number(e.target.value))
-                                                    )
-                                                }
-                                                />
+            <div style={{ marginTop: "5.5rem", height: "60vh", padding: "0 3rem" }}>
+                <div className="row top" style={{ marginTop: "9rem" }}>
+                    <div className="col-2">
+                        <h1 style={{ marginBottom: "1.5rem" }}>Panier</h1>
+                        {cartItems.length === 0 ? (
+                            <MessageBox>
+                                Le panier est vide. <Link to="/" style={{ color: "#2780e3" }}>Go Shopping</Link>
+                            </MessageBox>
+                        ) : (
+                            <ul>
+                                {cartItems.map((item) => (
+                                    <li key={item._id}>
+                                        <div className="row">
+                                            <div>
+                                                <img
+                                                    src={`http://102.219.178.49:5000/${item.image}`}
+                                                    alt={item.name}
+                                                    className="small"
+                                                ></img>
+                                            </div>
+                                            <div className="" style={{ margin: "0 2rem" }}>
+                                                <Link to={`/product/${item.product}`}>{item.name}</Link>
+                                            </div>
+                                            <div className=''>
+
+                                                <div class="form-group" style={{ margin: "0 2rem" }}>
+
+                                                    <input type="number"
+                                                        className="input-number"
+                                                        value={item.qty}
+                                                        onChange={(e) =>
+                                                            dispatch(
+                                                                addToCart(item.product, Number(e.target.value))
+                                                            )
+                                                        }
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button
+                                                    style={{ background: "rgb(247 37 21)", fontSize: "15px", margin: "0.5rem", color: "#fff", border: "none", padding: ".6rem" }}
+                                                    type="button"
+                                                    className='btn btn-warning customized-btn'
+                                                    onClick={() => removeFromCartHandler(item.product)}
+                                                >
+                                                    Supprimer
+                                                </button>
                                             </div>
                                         </div>
-                                        <div>
-                                            <button
-                                                style={{ background: "rgb(247 37 21)", fontSize: "15px", margin: "0.5rem", color: "#fff", border: "none", padding: ".6rem" }}
-                                                type="button"
-                                                className='btn btn-warning customized-btn'
-                                                onClick={() => removeFromCartHandler(item.product)}
-                                            >
-                                                Supprimer
-                                            </button>
-                                        </div>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </div>
-                <div className="col-1">
-                    <div className="card card-body">
-                        <ul>
-                            <h2>
-                                total ({cartItems.reduce((a, c) => a + Number(c.qty), 0)} produits) : {' '}
-                                {
-                                    cartItems.reduce((a, c) => Number(a) + Number(c.price) * Number(c.qty), 0)
-                                }
-                                dt
-                            </h2>
-                            <button
-                                type="button"
-                                onClick={checkoutHandler}
-                                className="btn btn-outline-warning customized-btn"
-                                style={{ background: "#049A5B", border: "none", color: "#fff", fontSize: "15px", padding: ".6rem" }}
-                                disabled={cartItems.length === 0}
-                            >
-                                Passer à la caisse
-                            </button>
-                        </ul>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                    <div className="col-1">
+                        <div className="card card-body">
+                            <ul>
+                                <h2>
+                                    total ({cartItems.reduce((a, c) => a + Number(c.qty), 0)} produits) : {' '}
+                                    {
+                                        cartItems.reduce((a, c) => Number(a) + Number(c.price) * Number(c.qty), 0)
+                                    }
+                                    dt
+                                </h2>
+                                <button
+                                    type="button"
+                                    onClick={checkoutHandler}
+                                    className="btn btn-outline-warning customized-btn"
+                                    style={{ background: "#049A5B", border: "none", color: "#fff", fontSize: "15px", padding: ".6rem" }}
+                                    disabled={cartItems.length === 0}
+                                >
+                                    Passer à la caisse
+                                </button>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
         </AnimatedPage>
 
     )

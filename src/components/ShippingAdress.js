@@ -10,18 +10,20 @@ const ShippinngAdress = () => {
 
   //Stopping user from going to shipping route 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("cartItems")).length === 0) {
-      history.push("/");
+
+
+    if(!localStorage.getItem("userInfo")) {
+      history.push("/signin");
     }
   }, []);
 
-  const userSignin = useSelector((state) => state.userSignin);
+ /*  const userSignin = useSelector((state) => state.userSignin);
 
   const { userInfo } = userSignin;
 
   if (!userInfo) {
     history.push("/signin");
-  }
+  } */
 
 
   const shippingInfos = JSON.parse(localStorage.getItem("shippingAddress"));
