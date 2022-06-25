@@ -1,6 +1,6 @@
 :root {
   --main-color:#FFF ;
-  --second-color:#049A5B !important ;
+  --second-color:#12923d !important ;
   --transperant-color: rgba(13, 128, 62, 0.53);
  /* --transperant-color: #1db978 !important;*/
   --third-color:#03a9f4;
@@ -1117,6 +1117,34 @@ i.fa-solid {
   font-size: 2rem;
 
 }
+
+.input-number-container {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+.input-number {
+  display: block;
+  width: 100%;
+  padding: 0.375rem .5rem 0.375rem 0.75rem;
+  -moz-padding-start: calc(0.75rem - 3px);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #373a3c;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 0;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+
 .fa-bars{
   display: none;
   cursor: pointer;
@@ -1232,6 +1260,7 @@ i.fa-solid {
   .fa-caret-down {
     display: none;
   }
+
   .user-container {
     align-self: self-start;
     margin: 0;
@@ -1303,6 +1332,13 @@ flex-direction: column;
 }
 }
 @media (max-width: 480px) {
+  .profile-form {
+    width:80% !important;
+  }
+  .accordion {
+    width:100% !important ;
+    margin: 4rem auto !important;
+  }
   .container {
     padding: 1.5rem;
   }

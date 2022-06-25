@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./post.css";
 import swal from "sweetalert";
 import { useHistory } from 'react-router-dom';
-import adminLogo from "../images/user (1).png" ;
+import adminLogo from "../images/user (1).png";
+import AnimatedPage from './AnimatedPage';
 
 
 const Post = () => {
@@ -11,13 +12,25 @@ const Post = () => {
     const [textBtn, setTextBtn] = useState("Publier");
 
     let history = useHistory();
+
+    useEffect(() => {
+        if (!JSON.parse(localStorage.getItem("userInfo"))) {
+            history.push("/signin");
+        }
+        else
+            if (!JSON.parse(localStorage.getItem("userInfo")).isAdmin) {
+                history.push("/signin");
+            }
+    }, []);
+
+
     const scrollToPosts = () => {
         const postsSection = document.querySelector(".news").offsetTop;
         console.log(postsSection);
         setTimeout(() => {
             window.scrollTo({
-                left:0,
-                top:postsSection +400
+                left: 0,
+                top: postsSection + 400
             });
         }, 800);
     }
@@ -60,31 +73,33 @@ const Post = () => {
         //scroll to "les dernieres actualités" sections
     }
     return (
-        <div className="body">
-            {/*             <div class="background-container" style={{ background: "rgb(247 247 247 / 95%)", }}></div> */}
+        <AnimatedPage>
+            <div className="body">
+                {/*             <div class="background-container" style={{ background: "rgb(247 247 247 / 95%)", }}></div> */}
 
-            <div className="containerPost">
-                <div className="wrapperPost">
-                    <section className="post">
-                        <h4>Publier Quelque Chose</h4>
-                        <form action="#" onSubmit={handleSubmit}>
-                            <div className="contentPost">
-                                <img src={adminLogo} alt="logo" style={{width:"3rem",marginRight:".7rem"}} />
-                                <div className="details">
-                                    <p> <b>Admin</b></p>
+                <div className="containerPost">
+                    <div className="wrapperPost">
+                        <section className="post">
+                            <h4>Publier Quelque Chose</h4>
+                            <form action="#" onSubmit={handleSubmit}>
+                                <div className="contentPost">
+                                    <img src={adminLogo} alt="logo" style={{ width: "3rem", marginRight: ".7rem" }} />
+                                    <div className="details">
+                                        <p> <b>Admin</b></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <textArea onChange={(e) => setTextTitle(e.target.value)} value={textTitle} className="options" placeholder='titre du publication' required style={{ height: "40px" }} />
-                            <textarea onChange={(e) => setTextArea(e.target.value)} value={textArea} placeholder="Ecrivez quelque chose" spellcheck="false" required className="options"></textarea>
-                            <input type="submit" value={textBtn} className='postButton' />
-                        </form>
-                    </section>
+                                <textArea onChange={(e) => setTextTitle(e.target.value)} value={textTitle} className="options" placeholder='titre du publication' required style={{ height: "40px" }} />
+                                <textarea onChange={(e) => setTextArea(e.target.value)} value={textArea} placeholder="Ecrivez quelque chose" spellcheck="false" required className="options"></textarea>
+                                <input type="submit" value={textBtn} className='postButton' />
+                            </form>
+                        </section>
 
+                    </div>
                 </div>
+
             </div>
+        </AnimatedPage>
 
-
-        </div>
     )
 }
 

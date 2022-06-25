@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { detailsUser, updateUserProfile } from "../actions/productAction";
 import { USER_UPDATE_PROFILE_RESET } from "../constants/productConstant";
+import AnimatedPage from "./AnimatedPage";
 import LoadingBox from "./LoadingBox";
 import MessageBox from "./MessageBox";
 
@@ -48,8 +49,9 @@ export default function ProfileScreen() {
 
     return (
 
+        <AnimatedPage>
 
-        <div className="contact-form" onSubmit={submitHandler} style={{margin:"2rem auto",width:"60%",marginTop:"8rem"}}>
+        <div className="contact-form profile-form" onSubmit={submitHandler} style={{margin:"2rem auto",width:"60%",marginTop:"8rem"}}>
 
             <form autocomplete="on">
                 <h3 className="title" style={{color:"#fff"}}>Profile</h3>
@@ -57,13 +59,13 @@ export default function ProfileScreen() {
                 {loading ? (
                     <LoadingBox></LoadingBox>
                 ) : error ? (
-                    <MessageBox variant="danger">{error}</MessageBox>
+                    <MessageBox variant="danger">Erreur lors de chargement des infos personnelles</MessageBox>
                 ) : (
                     <>
                         <div>
                             {loadingUpdate && <LoadingBox></LoadingBox>}
                             {errorUpdate && (
-                                <MessageBox variant="danger">{errorUpdate}</MessageBox>
+                                <MessageBox variant="danger">Erreur lors du modification du compte </MessageBox>
                             )}
                             {successUpdate && (
                                 <MessageBox>
@@ -128,5 +130,7 @@ export default function ProfileScreen() {
                 )}
             </form>
         </div>
+        </AnimatedPage>
+
     )
 }

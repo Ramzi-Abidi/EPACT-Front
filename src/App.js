@@ -2,12 +2,11 @@ import 'bootswatch/dist/slate/bootstrap.min.css';
 import 'bootswatch/dist/cosmo/bootstrap.css';
 
 import './App.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
 import ProductScreen from './components/ProductScreen';
 import Contact from './components/Contact';
-import AnimatedPage from './components/AnimatedPage';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
 import CartScreen from './components/CartScreen';
@@ -24,9 +23,10 @@ import EditProduct from "./components/EditProduct";
 import Footer from './components/Footer';
 import Orders from './components/Orders';
 import Swiper from './components/Swiper';
-import OrderScreen from "./components/OrderScreen" ;
+import OrderScreen from "./components/OrderScreen";
 import Tojrab from "./components/Tojrab";
 import CommentScreen from './components/CommentScreen';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
 
@@ -39,122 +39,92 @@ function App() {
 
       <div className="App">
 
-        <div className="grid-container">
-          <Header userInfo={userInfo} />
+        <Switch>
+          <div className="grid-container">
+            <Header userInfo={userInfo} />
 
-          <main>
-            <Route path="/" exact>
-              <AnimatedPage>
+            <main>
+
+              <Route path="/" exact>
                 <Home />
-              </AnimatedPage>
-            </Route>
-            
-            <Route path="/swiper">
+              </Route>
+
+              <Route path="/swiper" exact>
                 <Swiper />
-            </Route>
+              </Route>
 
-            <Route path="/tojrab">
+              <Route path="/tojrab">
                 <Tojrab />
-            </Route>
+              </Route>
 
-            {/*         <Route path="/" component={Home}>
-            </Route> */}
+              <Route path="/item" exact>
+                <Item />
+              </Route>
 
-            {/*         <Route path="/products">
-          <AnimatedPage>
-            <Products />
-          </AnimatedPage>
-        </Route> */}
-
-            <Route path="/item">
-              <Item />
-            </Route>
-
-            <Route path="/contact">
-              <AnimatedPage>
+              <Route path="/contact" exact>
                 <Contact />
-              </AnimatedPage>
-            </Route>
+              </Route>
 
-            <PrivateRoute path="/profile" component={ProfileScreen}>
-            </PrivateRoute>
+              <PrivateRoute path="/profile" component={ProfileScreen} exact>
+              </PrivateRoute>
 
-            <Route path="/signup">
-              <AnimatedPage>
+              <Route path="/signup" exact>
                 <Signup />
-              </AnimatedPage>
-            </Route>
+              </Route>
 
-            <Route path="/signin">
-              <AnimatedPage>
+              <Route path="/signin" exact>
                 <Signin />
-              </AnimatedPage>
-            </Route>
+              </Route>
 
+              <Route path="/product/:id" component={ProductScreen} exact>
+              </Route>
 
-            <Route path="/tojrab">
-                <Tojrab />
-            </Route>
+              <Route path="/comment/:id" component={CommentScreen} exact>
+              </Route>
 
-            <Route path="/product/:id" component={ProductScreen}>
-            </Route>
+              <Route path="/editProduct/:id" component={EditProduct} exact>
+              </Route>
 
-            <Route path="/comment/:id" component={CommentScreen}>
-            </Route>
-
-            <Route path="/editProduct/:id" component={EditProduct}>
-            </Route>
-
-            {/*             <Route path="/placeOrder" component={PlaceOrder}>
-            </Route> */}
-
-            <Route path="/aboutUs">
-              <AnimatedPage>
+              <Route path="/aboutUs" exact>
                 <Apropos />
-              </AnimatedPage>
-            </Route>
+              </Route>
 
-            <Route path="/post">
-              <AnimatedPage>
+              <Route path="/post" exact>
                 <Post />
-              </AnimatedPage>
-            </Route>
+              </Route>
 
-            <Route path="/shipping">
-              <AnimatedPage>
+              <Route path="/shipping" exact>
                 <ShippingAdress />
-              </AnimatedPage>
-            </Route>
+              </Route>
 
-            <Route path="/placeOrder">
-              <AnimatedPage>
+              <Route path="/placeOrder" exact>
                 <PlaceOrder />
-              </AnimatedPage>
-            </Route>
+              </Route>
 
-            <Route path="/productlist">
-              <AnimatedPage>
+              <Route path="/productlist" exact>
                 <Productlist />
-              </AnimatedPage>
-            </Route>
+              </Route>
 
-            <Route path="/orders">
-              <AnimatedPage>
+              <Route path="/orders" exact>
                 <OrderScreen />
                 {/*<Order />*/}
-              </AnimatedPage>
-            </Route>
+              </Route>
 
-            
-            <Route path="/cart/:id?" component={CartScreen}>
-            </Route>
-          </main>
+              <Route exact path="/cart/:id?" component={CartScreen}>
+              </Route>
 
+            </main>
+
+p
             <Footer />
-        </div>
+
+
+          </div>
+        </Switch>
+
       </div>
 
-    </BrowserRouter>
+    </BrowserRouter >
 
   );
 }

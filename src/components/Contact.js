@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import swal from 'sweetalert';
+import AnimatedPage from './AnimatedPage';
 import LoadingBox from './LoadingBox';
 
 const Contact = () => {
@@ -54,6 +55,8 @@ const Contact = () => {
 
 
   return (
+    <AnimatedPage>
+
     <div className='holder'>
       <div class="background-container" style={{ background: "rgb(247 247 247 / 95%)", }}>
       </div>
@@ -114,6 +117,8 @@ const Contact = () => {
         </div>
       </div>
     </div>
+    </AnimatedPage>
+
   )
 }
 

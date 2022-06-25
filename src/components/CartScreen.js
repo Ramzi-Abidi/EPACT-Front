@@ -6,8 +6,10 @@ import { addToCart, listProducts, removeFromCart } from '../actions/productActio
 import { useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import MessageBox from './MessageBox';
+import AnimatedPage from './AnimatedPage';
 
 const CartScreen = (props) => {
+
     const qty = props.location.search
         ? Number(props.location.search.split('=')[1])
         : 1;
@@ -19,6 +21,10 @@ const CartScreen = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+ /*        if (!JSON.parse(localStorage.getItem("userInfo"))) {
+            history.push("/signin");
+        } */
+
         if (props.match.params.id) {
             dispatch(addToCart(props.match.params.id, qty));
         }
@@ -33,13 +39,15 @@ const CartScreen = (props) => {
     };
 
     return (
+        <AnimatedPage>
+
         <div style={{ marginTop: "5.5rem", height: "60vh", padding: "0 3rem" }}>
             <div className="row top" style={{ marginTop: "9rem" }}>
                 <div className="col-2">
                     <h1 style={{ marginBottom: "1.5rem" }}>Panier</h1>
                     {cartItems.length === 0 ? (
                         <MessageBox>
-                            Le panier est vide. <Link to="/" style={{color:"#2780e3"}}>Go Shopping</Link>
+                            Le panier est vide. <Link to="/" style={{ color: "#2780e3" }}>Go Shopping</Link>
                         </MessageBox>
                     ) : (
                         <ul>
@@ -53,41 +61,27 @@ const CartScreen = (props) => {
                                                 className="small"
                                             ></img>
                                         </div>
-                                        <div className="" style={{margin:"0 2rem"}}>
+                                        <div className="" style={{ margin: "0 2rem" }}>
                                             <Link to={`/product/${item.product}`}>{item.name}</Link>
                                         </div>
-                                        <div>
-                                            {/*<select
+                                        <div className=''>
+                                       
+                                            <div class="form-group" style={{ margin: "0 2rem" }}>
+                                               
+                                                <input type="number"
+                                                className="input-number"
                                                 value={item.qty}
                                                 onChange={(e) =>
                                                     dispatch(
                                                         addToCart(item.product, Number(e.target.value))
                                                     )
                                                 }
-                                            >
-                                                <option value={1}>1</option>
-                                                <option value={2}>2</option>
-                                                <option value={3}>3</option>
-                                            </select> */}
-                                            <div class="form-group" style={{margin:"0 2rem"}}>
-                                                <select class="form-select"
-                                                    value={item.qty}
-                                                    style={{height:"35px",width:"60px"}}
-                                                    onChange={(e) =>
-                                                        dispatch(
-                                                            addToCart(item.product, Number(e.target.value))
-                                                        )
-                                                    }>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                </select>
+                                                />
                                             </div>
                                         </div>
-                                        {/* <div>{item.price}dt</div> */}
                                         <div>
                                             <button
-                                                style={{ background: "rgb(247 37 21)",fontSize:"15px", margin: "0.5rem",color:"#fff",border:"none",padding:".6rem" }}
+                                                style={{ background: "rgb(247 37 21)", fontSize: "15px", margin: "0.5rem", color: "#fff", border: "none", padding: ".6rem" }}
                                                 type="button"
                                                 className='btn btn-warning customized-btn'
                                                 onClick={() => removeFromCartHandler(item.product)}
@@ -115,7 +109,7 @@ const CartScreen = (props) => {
                                 type="button"
                                 onClick={checkoutHandler}
                                 className="btn btn-outline-warning customized-btn"
-                                style={{background:"#049A5B", border:"none",color:"#fff",fontSize:"15px",padding:".6rem"}}
+                                style={{ background: "#049A5B", border: "none", color: "#fff", fontSize: "15px", padding: ".6rem" }}
                                 disabled={cartItems.length === 0}
                             >
                                 Passer à la caisse
@@ -126,6 +120,8 @@ const CartScreen = (props) => {
             </div>
 
         </div>
+        </AnimatedPage>
+
     )
 }
 

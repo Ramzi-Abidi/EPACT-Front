@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
 import { detailsProduct } from '../actions/productAction';
+import AnimatedPage from './AnimatedPage';
 import LoadingBox from './LoadingBox';
 import MessageBox from './MessageBox';
 
@@ -14,6 +15,9 @@ const ProductScreen = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if(!localStorage.getItem("userInfo")){
+      history.push("/signin");
+    }
     dispatch(detailsProduct(props.match.params.id));
   }, []);
 
@@ -37,7 +41,8 @@ const ProductScreen = (props) => {
   };
 
   return (
-    <>
+    <AnimatedPage>
+
       <div className="row center">
         {loading ? <LoadingBox />
           :
@@ -47,17 +52,17 @@ const ProductScreen = (props) => {
               <>
 
                 <div className="row top" style={{ margin: "4rem 1rem" }}>
-                  <div className="col-2" style={{marginRight:"3rem"}}>
+                  <div className="col-2" style={{ marginRight: "3rem" }}>
                     <img src={`http://102.219.178.49:5000/${product.image}`} className="large" alt={product.name} />
                   </div>
                   <div className="col-1 ">
                     <div className='card card-body'>
-                      <ul style={{paddingLeft:"0",margin:"1.2rem"}}>
-                        <li style={{display:"flex"}}>
-                          <h4 className='title'> <b>Nom :</b> </h4>  <h4 style={{marginLeft:"1rem",marginBottom:"0"}}>{product.name} </h4>
+                      <ul style={{ paddingLeft: "0", margin: "1.2rem" }}>
+                        <li style={{ display: "flex" }}>
+                          <h4 className='title'> <b>Nom :</b> </h4>  <h4 style={{ marginLeft: "1rem", marginBottom: "0" }}>{product.name} </h4>
                         </li>
-                        <li style={{display:"flex",alignItems:"center"}}>
-                        <h4 className='top-margin'><b>Prix : </b></h4> <h4 style={{marginLeft:"1rem",marginBottom:"0"}}> {product.price} dt </h4>
+                        <li style={{ display: "flex", alignItems: "center" }}>
+                          <h4 className='top-margin'><b>Prix : </b></h4> <h4 style={{ marginLeft: "1rem", marginBottom: "0" }}> {product.price} dt </h4>
                         </li>
                         {/* <h4 className='top-margin'><b> Description :</b> </h4> <h4> {product.description} </h4> */}
                       </ul>
@@ -66,7 +71,7 @@ const ProductScreen = (props) => {
                   </div>
                   <div className="col-1">
                     <div className='card card-body'>
-                      <ul style={{paddingLeft:"0",margin:"1.2rem"}}>
+                      <ul style={{ paddingLeft: "0", margin: "1.2rem" }}>
                         <li>
                           <div className='content'>
                             <h4 className='title2'>Prix : </h4>
@@ -76,18 +81,23 @@ const ProductScreen = (props) => {
                         <li>
                           <div className='content'>
                             <h4 style={{ margin: "1.7rem 0" }}>Qte:</h4>
-                            <div className=''>
+                            <div className='input-number-container'>
                               <div class="form-group">
-                                <select class="form-select" style={{ margin: "1.7rem 0" }} id="exampleSelect1" onChange={(e)=>setQty(e.target.value)}>
+                              {/*   <select class="form-select" style={{ margin: "1.7rem 0" }} id="exampleSelect1" onChange={(e) => setQty(e.target.value)}>
                                   <option>1</option>
                                   <option>2</option>
                                   <option>3</option>
-                                </select>
+                                </select> */}
+
+                                <input type="number"
+                                  className='input-number'
+                                  onChange={(e) => setQty(e.target.value)}
+                                />
                               </div>
                             </div>
                           </div>
                           <li className='btn-container'>
-                            <button className='btn btn-warning' onClick={handleAddToCart} style={{background:"#049A5B", border:"none",padding:".6rem"}}>
+                            <button className='btn btn-warning' onClick={handleAddToCart} style={{ background: "#049A5B", border: "none", padding: ".6rem" }}>
                               Ajouter au panier
                             </button>
                           </li>
@@ -100,7 +110,7 @@ const ProductScreen = (props) => {
             )
         }
       </div>
-    </>
+      </AnimatedPage>
   )
 }
 

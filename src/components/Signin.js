@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { signin } from '../actions/productAction';
+import AnimatedPage from './AnimatedPage';
 import LoadingBox from "./LoadingBox";
 import MessageBox from "./MessageBox";
 
@@ -25,6 +26,8 @@ const Signin = (props) => {
   }, [userInfo]);
 
   return (
+    <AnimatedPage>
+
     <div className='holder'>
       <div class="background-container" style={{ background: "rgba(247, 247, 247, 0.95)" }}>
       </div>
@@ -62,7 +65,7 @@ const Signin = (props) => {
 
           <form autoComplete="on" style={{ position: "relative", height: "100%" }}>
             {loading && <LoadingBox></LoadingBox>}
-            {error && <MessageBox variant={"danger"}> {error} </MessageBox>}
+            {error && <MessageBox variant={"danger"}> Mail ou mot de passe invalide </MessageBox>}
             <h3 class="title" style={{ color: "#fff" }}>Sign in</h3>
 
             <div class="input-container">
@@ -84,6 +87,8 @@ const Signin = (props) => {
         </div>
       </div>
     </div>
+    </AnimatedPage>
+
   )
 }
 

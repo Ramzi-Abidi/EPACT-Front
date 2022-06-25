@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import AnimatedPage from './AnimatedPage';
 import LoadingBox from './LoadingBox';
 import Table from "./Table";
 
@@ -41,6 +42,8 @@ const Orders = () => {
 
 
     return (
+        <AnimatedPage>
+
         <div className="tableContainer">
             {loading && <LoadingBox></LoadingBox>}
 
@@ -54,6 +57,8 @@ const Orders = () => {
             </div>
             <Table orders={newSearch ? newSearch : orders} setOrders={setOrders} loading={loading} />
         </div>
+        </AnimatedPage>
+
     )
 }
 

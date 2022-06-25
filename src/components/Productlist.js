@@ -4,6 +4,7 @@ import { listProducts } from '../actions/productAction';
 import "./productlist.css";
 import Axios from 'axios';
 import swal from 'sweetalert';
+import AnimatedPage from './AnimatedPage';
 
 
 
@@ -18,9 +19,8 @@ const Productlist = () => {
 
   useEffect(() => {
     //verif if the user isn't authenticated or not an admin :
-    if (!localStorage.getItem("userInfo") && !JSON.parse(localStorage.getItem("userInfo")).isAdmin) {
+    if (!localStorage.getItem("userInfo") || !JSON.parse(localStorage.getItem("userInfo")).isAdmin) {
       history.push("/signin");
-
     }
 
     fetch("http://102.219.178.49:5000/api/products")
@@ -81,7 +81,8 @@ const Productlist = () => {
     setPrice("");
   };
 
-  return (
+  return (  
+    <AnimatedPage>
 
     <form style={{ padding: "2.3rem 3.5rem", zIndex: 10, overflow: "hidden", position: "relative", margin: "1rem 3rem" }} onSubmit={send} encType="multipart/form-data" >
       <div className="container">
@@ -105,6 +106,8 @@ const Productlist = () => {
       </div>
 
     </form>
+    </AnimatedPage>
+
   )
 }
 

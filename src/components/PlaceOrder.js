@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import { createOrder } from '../actions/productAction';
 import { ORDER_CREATE_RESET } from '../constants/productConstant';
 import { cartReducer } from '../reducers/cartReducers';
+import AnimatedPage from './AnimatedPage';
 import CheckoutSteps from './CheckoutSteps'
 import LoadingBox from './LoadingBox';
 import MessageBox from './MessageBox';
@@ -41,6 +42,10 @@ const PlaceOrder = () => {
   };
 
   useEffect(() => {
+    if (!JSON.parse(localStorage.getItem("userInfo"))) {
+      history.push("/signin");
+    }
+
     if (success) {
       swal("Envoyée!", "La commande est envoyée avec succès", "success");
       history.push("/");
@@ -50,6 +55,8 @@ const PlaceOrder = () => {
   }, [dispatch, order, history, success]);
 
   return (
+    <AnimatedPage>
+
     <div style={{ marginTop: "7.5rem" }}>
 
       <div clasName="container">
@@ -139,7 +146,7 @@ const PlaceOrder = () => {
                 </li>
                 <li>
                   <button
-                    style={{ width: "100%", height: "42px", marginTop: "1.5rem", background: "#049A5B", border: "none", color: "#fff",fontSize:"15px" }}
+                    style={{ width: "100%", height: "42px", marginTop: "1.5rem", background: "#049A5B", border: "none", color: "#fff", fontSize: "15px" }}
                     type="button"
                     onClick={placeOrderHandler}
                     className="primary block btn"
@@ -158,6 +165,8 @@ const PlaceOrder = () => {
       </div>
 
     </div>
+    </AnimatedPage>
+
   )
 }
 

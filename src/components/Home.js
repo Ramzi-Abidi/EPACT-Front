@@ -4,6 +4,7 @@ import MessageBox from './MessageBox';
 import { useHistory } from "react-router-dom";
 import Item from "./Item";
 import ProductsItem from './ProductsItem';
+import AnimatedPage from './AnimatedPage';
 
 const Home = () => {
 	/* const productList = useSelector((state) => state.productList); */
@@ -47,7 +48,8 @@ const Home = () => {
 	}, []);
 
 	return (
-		<>
+		<AnimatedPage>
+
 			<section className='site-desc'>
 
 				<article className='siteDesc-container'>
@@ -76,12 +78,11 @@ const Home = () => {
 					{
 						loading ? <LoadingBox />
 							:
-							error ? <MessageBox variant={"danger"}> {error} </MessageBox>
+							error ? <MessageBox variant={"danger"}> Erreur lors de chargement des produits </MessageBox>
 								:
 								<ProductsItem products={products} setProducts={setProducts} />
 					}
 
-					{!products || products.length===0 && <MessageBox>Aucun produit pour le moment</MessageBox>}
 				</section>
 			</div>
 
@@ -90,7 +91,7 @@ const Home = () => {
 
 				<Item />
 			</section>
-		</>
+		</AnimatedPage>
 	)
 }
 

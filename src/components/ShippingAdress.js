@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { saveShippingAddress } from '../actions/productAction';
+import AnimatedPage from './AnimatedPage';
 import CheckoutSteps from './CheckoutSteps';
 
 const ShippinngAdress = () => {
@@ -45,6 +46,8 @@ const ShippinngAdress = () => {
   };
 
   return (
+    <AnimatedPage>
+
     <div style={{ marginTop: "2rem" , padding:"4rem 0"}}>
       <CheckoutSteps step1="active" step2="active" />
       <div class="contact-form" style={{ margin:"1rem auto",width:"75%"}}>
@@ -69,13 +72,15 @@ const ShippinngAdress = () => {
             
           </div>
           <div class="input-container textarea">
-            <input name="country" class="input" placeholder='Pays :' value={country} onChange={(e) => setCountry(e.target.value)} required />
+            <input name="country" class="input" placeholder='Ville :' value={country} onChange={(e) => setCountry(e.target.value)} required />
         
           </div>
           <input type="submit" value="Continuer" style={{ width: "100%" }} className="randomBtn" />
         </form>
       </div>
     </div>
+    </AnimatedPage>
+
   )
 }
 

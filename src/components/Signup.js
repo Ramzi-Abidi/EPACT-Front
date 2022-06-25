@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { register, signin } from '../actions/productAction';
+import AnimatedPage from './AnimatedPage';
 import LoadingBox from "./LoadingBox";
 import MessageBox from "./MessageBox";
 
@@ -41,6 +42,8 @@ const Signup = (props) => {
   }, [userInfo]);
 
   return (
+    <AnimatedPage>
+
     <div className='holder' >
       <div class="background-container" style={{ background: "#f1f1f1f1" }}>
       </div>
@@ -85,7 +88,7 @@ const Signup = (props) => {
             <h3 class="title" style={{ color: "#fff" }}>Sign up</h3>
 
             <div class="input-container">
-              <input type="text" class="input" placeholder="Nom d'utilisateur" onChange={(e) => setName(e.target.value)} minLength={5} />
+              <input type="text" class="input" placeholder="Nom d'utilisateur" onChange={(e) => setName(e.target.value)} minLength={4} />
               <span>Nom</span>
             </div>
             <div class="input-container">
@@ -93,7 +96,7 @@ const Signup = (props) => {
               <span>Email</span>
             </div>
             <div class="input-container">
-              <input type="password" class="input" placeholder='Mot de passe' onChange={(e) => setPassword(e.target.value)} minLength={8} maxLength={12} />
+              <input type="password" class="input" placeholder='Mot de passe' onChange={(e) => setPassword(e.target.value)} minLength={6} maxLength={12} />
               <span>Mot de passe</span>
             </div>
 
@@ -128,6 +131,8 @@ const Signup = (props) => {
         </div>
       </div>
     </div>
+    </AnimatedPage>
+
   )
 }
 

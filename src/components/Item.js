@@ -3,17 +3,20 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { AiOutlineComment, AiOutlineEdit, AiTwotoneDelete } from "react-icons/ai";
 import swal from "sweetalert";
 import MessageBox from './MessageBox';
-import adminLogo from "../images/user (1).png";
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 // Import Swiper styles
 
 import 'swiper/css';
 import "./publishedPosts.css";
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import LoadingBox from './LoadingBox';
 
 export default () => {
     const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+
     let history = useHistory();
 
     const handleCommentClick = (post) => {
@@ -29,6 +32,7 @@ export default () => {
     useEffect(() => {
         fetch("http://102.219.178.49:5000/api/getAllPosts")
             .then((res) => {
+                setLoading(true);
                 return res.json();
             })
             .then((data) => {
@@ -36,8 +40,10 @@ export default () => {
                 if (data) {
                     setPosts(data);
                 }
+                setLoading(false);
             })
             .catch((err) => {
+                setError(err) ;
                 console.log(err);
             })
     }, []);
@@ -48,18 +54,16 @@ export default () => {
             return post._id !== id;
         });
         setPosts(arr);
-        //        console.log(id);
 
-        fetch('http://localhost:5000/api/posts/' + id, {  //102.219.178.49:5000
+        fetch('http://102.219.178.49:5000/api/posts/' + id, {  //102.219.178.49:5000
             method: 'DELETE',
         })
             .then(res => {
                 return res.json();
-            }) // or res.json()
+            }) 
             .then(data => {
                 if (data) {
-                    console.log(data);
-                    //swal({})
+                   // console.log(data);
                     swal("done!", "supprimer avec succée", "success");
                 }
             })
@@ -71,7 +75,7 @@ export default () => {
 
     return (
 
-        <Swiper style={{ margin: "4rem .6rem" ,padding:"2.5rem 1rem",}}
+        <Swiper style={{ margin: "4rem .6rem", padding: "2.5rem 1rem", }}
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={30}
             slidesPerView={3}
@@ -88,8 +92,7 @@ export default () => {
                         <SwiperSlide>
                             <div class="card border-primary mb-3" style={{ minHeight: "400px" }} key={post._id} >
                                 <div class="card-header" style={{ padding: "1.5rem" }}>
-                                    {/*  <img src={adminLogo} alt="logo" style={{ width: "3rem", marginRight: ".7rem" }} /> */}
-                                    {/* <b> Admin</b> */}
+                                   
                                     <h4 class="card-title"> <b> {post.title} </b> </h4>
 
                                 </div>
@@ -112,7 +115,8 @@ export default () => {
                     )
                 })
             }
-            {posts.length === 0 && <MessageBox> Aucune publication pour le moment </MessageBox>}
+            {loading && <LoadingBox />}
+            {error && <MessageBox> Erreur lors de chargement des publications </MessageBox>}
 
 
         </Swiper>

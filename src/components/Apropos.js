@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import girl from "../images/girl.jpg";
+import AnimatedPage from './AnimatedPage';
 
 const Apropos = () => {
   return (
+    <AnimatedPage>
+
     <div class="wrapper">
 
       <div class="background-container" style={{ background: "rgb(251 251 251 / 95%)", minHeight:"100vh" }}>
@@ -28,6 +31,8 @@ const Apropos = () => {
         </div>
       </div>
     </div>
+    </AnimatedPage>
+
   )
 }
 
