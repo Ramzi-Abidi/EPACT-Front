@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Image from "../images/Asset 1.png";
@@ -10,7 +10,7 @@ const Header = ({ userInfo }) => {
 
   const [click, setClick] = useState(false);
 
-  
+
 
   const handleMenuClick = () => {
     setClick(!click);
@@ -45,8 +45,9 @@ const Header = ({ userInfo }) => {
 
   return (
     <header className="row" color='#333' style={{ width: "100%" }}>
+
       <div className='first'>
-        <div className='img-container' style={{width:"35%"}}>
+        <div className='img-container' style={{ width: "32.5%" }}>
           <img src={Image} onClick={handleClick} />
         </div>
       </div>
@@ -56,7 +57,6 @@ const Header = ({ userInfo }) => {
       </div>
 
       <ul className={click ? "active" : "notActive"}>
-
         <div className='itemsContainer'>
           {
             userInfo && userInfo.isAdmin &&
@@ -124,11 +124,11 @@ const Header = ({ userInfo }) => {
 
 
       <div className='second' style={{ display: "flex", alignItems: "center" }}>
-        <ul style={{ display: "flex", alignItems: "center" }}>
+        <ul style={{ display: "flex", alignItems: "center", padding: "0", margin: "0" }}>
           <li>
             <Link to="/cart" className='links firstLinks'>
 
-            <img src={basket} style={{ width: "2.9rem" }} />
+              <img src={basket} style={{ width: "2.9rem" }} />
 
               {cartItems.length > 0 ? <span className='badge'> {cartItems.length} </span> : <span className='badge'> 0 </span>}
             </Link>

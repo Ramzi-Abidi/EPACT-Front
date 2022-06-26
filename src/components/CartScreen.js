@@ -21,12 +21,10 @@ const CartScreen = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-               if (!JSON.parse(localStorage.getItem("userInfo"))) {
-                  history.push("/signin");
-              }  
-       /*  if (JSON.parse(localStorage.getItem("cartItems")).length === 0) {
+        if (!JSON.parse(localStorage.getItem("userInfo"))) {
             history.push("/signin");
-        } */
+        }
+
 
         if (props.match.params.id) {
             dispatch(addToCart(props.match.params.id, qty));
@@ -38,6 +36,7 @@ const CartScreen = (props) => {
     };
 
     const checkoutHandler = () => {
+        
         history.push('/shipping');
     };
 
@@ -79,6 +78,7 @@ const CartScreen = (props) => {
                                                                 addToCart(item.product, Number(e.target.value))
                                                             )
                                                         }
+                                                        min={1}
                                                     />
                                                 </div>
                                             </div>

@@ -31,6 +31,8 @@ const ProductScreen = (props) => {
     return <div>Il n'y a pas ce produit </div>
 
   const handleAddToCart = () => {
+ /*    if(qty<1)
+      return false; */
     if (localStorage.getItem("userInfo"))
       history.push(`/cart/${props.match.params.id}?qty=${qty}`);
     //history.push(`/cart/`);
@@ -79,28 +81,30 @@ const ProductScreen = (props) => {
                           </div>
                         </li>
                         <li>
+                        <form onSubmit={handleAddToCart} style={{padding:"0"}}>
+
                           <div className='content'>
                             <h4 style={{ margin: "1.7rem 0" }}>Qte:</h4>
+                            
                             <div className='input-number-container'>
                               <div class="form-group">
-                              {/*   <select class="form-select" style={{ margin: "1.7rem 0" }} id="exampleSelect1" onChange={(e) => setQty(e.target.value)}>
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                </select> */}
+
 
                                 <input type="number"
                                   className='input-number'
                                   onChange={(e) => setQty(e.target.value)}
+                                  min={1}
                                 />
                               </div>
                             </div>
                           </div>
                           <li className='btn-container'>
-                            <button className='btn btn-warning' onClick={handleAddToCart} style={{ background: "#049A5B", border: "none", padding: ".6rem" }}>
+                            <button type='submit' className='btn btn-warning' /* onClick={handleAddToCart} */ style={{ background: "#049A5B", border: "none", padding: ".6rem" }}>
                               Ajouter au panier
                             </button>
                           </li>
+                          </form>
+
                         </li>
                       </ul>
                     </div>

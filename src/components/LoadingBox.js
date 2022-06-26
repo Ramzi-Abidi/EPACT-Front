@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import {  ThreeDots } from 'react-loader-spinner'
+
 
 const LoadingBox = () => {
   return (
     <div>
-        <i className='fa fa-spinner fa-spin'> </i> Loading ...
+      <ThreeDots color="#00BFFF" height={80} width={80} />
+
     </div>
   )
 }
 
-export default LoadingBox
+export default LoadingBox;

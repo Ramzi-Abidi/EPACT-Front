@@ -5,6 +5,7 @@ import img1 from "../images/6556721_avatar_man_person_user_woman_icon.png";
 import badge from "../images/check.png";
 import LoadingBox from './LoadingBox';
 import { useHistory } from 'react-router-dom';
+import MessageBox from './MessageBox';
 
 
 
@@ -14,6 +15,8 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
     const [replyContent, setReplyContent] = useState("");
     const [replies, setReplies] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState();
+
     let isRendered = useRef(false);
 
     let history = useHistory();
@@ -51,6 +54,8 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
                 return data;
             })
             .catch((err) => {
+                setError(err) ;
+                setLoading(false) ;
                 console.log(err);
             })
 
@@ -190,6 +195,7 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
             {/**/}
             <div>
                 {loading && <LoadingBox />}
+                {error && <MessageBox> Erreur lors de chargement des réponses </MessageBox>}
                 {replies.map((reply) => {
                     return (
                         <div key={reply._id} className="singleComment" style={{ position: "relative", width: "62%", marginLeft: "8rem", display: "flex", flexDirection: "column", alignContent: "flex-start" }}>
