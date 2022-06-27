@@ -82,9 +82,9 @@ const PlaceOrder = () => {
 
               <li>
                 <div className='card card-body'>
-                  <h2>Payment</h2>
+                  <h2>Paiement</h2>
                   <p>
-                    <strong>Methode de Paiement : </strong> Cash
+                    <strong>Methode de paiement : </strong> Cash
                   </p>
                 </div>
               </li>

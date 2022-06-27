@@ -70,10 +70,10 @@ const Signup = (props) => {
 
               <a href="https://www.facebook.com/EPACTTunsie/" target={"_blank"}><i class="fab fa-facebook-f">  </i></a>
 
-              <Link to="#">
+            {/*   <Link to="#">
                 <i class="fab fa-instagram"></i>
               </Link>
-
+ */}
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@ const Signup = (props) => {
           <form autoComplete="on">
             {loading && <LoadingBox></LoadingBox>}
             {error && <MessageBox variant={"danger"}> Ce compte existe déjà </MessageBox>}
-            <h3 class="title" style={{ color: "#fff" }}>Sign up</h3>
+            <h3 class="title" style={{ color: "#fff" }}>S'inscrire</h3>
 
             <div class="input-container">
               <input type="text" class="input" placeholder="Nom d'utilisateur" onChange={(e) => setName(e.target.value)} minLength={4} />

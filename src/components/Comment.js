@@ -128,7 +128,7 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
             .then(data => {
                 if (data) {
                     console.log(data);
-                    swal("done!", "supprimer avec succée", "success");
+                    swal("done!", "supprimer avec succès", "success");
                 }
             })
             .catch((err) => {

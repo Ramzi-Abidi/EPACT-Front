@@ -33,9 +33,9 @@ const SingleProduct = ({ prod, setProducts, products }) => {
 
   return (
     <div style={{margin:"1rem"}}>
-      <div className="card-product">
+      <div className="card-product" style={{width:"350px"}}>
         <Link to={`/product/${prod._id}`}>
-          <img className="medium" src={`http://102.219.178.49:5000/${prod.image}`} alt="product" />
+          <img className="medium" src={`http://102.219.178.49:5000/${prod.image}`} alt="product" style={{with:"100%"}} />
         </Link>
         <div className="card-body">
           <div style={{margin: "0 2.5rem"}}>

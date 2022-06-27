@@ -51,9 +51,9 @@ const Signin = (props) => {
             <div class="social-icons">
 
               <a href="https://www.facebook.com/EPACTTunsie/" target={"_blank"}><i class="fab fa-facebook-f">  </i></a>
-              <Link to="#">
+             {/*  <Link to="#">
                 <i class="fab fa-instagram"></i>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@ const Signin = (props) => {
           <form autoComplete="on" style={{ position: "relative", height: "100%" }}>
             {loading && <LoadingBox></LoadingBox>}
             {error && <MessageBox variant={"danger"}> Mail ou mot de passe invalide </MessageBox>}
-            <h3 class="title" style={{ color: "#fff" }}>Sign in</h3>
+            <h3 class="title" style={{ color: "#fff" }}>Se connecter</h3>
 
             <div class="input-container">
               <input type="email" name="email" class="input" placeholder='Email' onChange={(e) => setEmail(e.target.value)} required />
