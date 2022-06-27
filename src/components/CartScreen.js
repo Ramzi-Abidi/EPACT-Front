@@ -36,7 +36,7 @@ const CartScreen = (props) => {
     };
 
     const checkoutHandler = () => {
-        
+
         history.push('/shipping');
     };
 
@@ -45,7 +45,7 @@ const CartScreen = (props) => {
 
             <div style={{ marginTop: "5.5rem", height: "60vh", padding: "0 3rem" }}>
                 <div className="row top" style={{ marginTop: "9rem" }}>
-                    <div className="col-2">
+                    <div className="col-2" style={{maxWidth:"initial"}}>
                         <h1 style={{ marginBottom: "1.5rem" }}>Panier</h1>
                         {cartItems.length === 0 ? (
                             <MessageBox>
@@ -54,7 +54,7 @@ const CartScreen = (props) => {
                         ) : (
                             <ul>
                                 {cartItems.map((item) => (
-                                    <li key={item._id}>
+                                    <li key={item._id} style={{margin:"1.5rem 0"}}>
                                         <div className="row">
                                             <div>
                                                 <img
@@ -63,14 +63,15 @@ const CartScreen = (props) => {
                                                     className="small"
                                                 ></img>
                                             </div>
-                                            <div className="" style={{ margin: "0 2rem" }}>
+                                            <div className="" style={{ fontSize: "16px" }}>
                                                 <Link to={`/product/${item.product}`}>{item.name}</Link>
                                             </div>
-                                            <div className=''>
+                                            <div>
 
                                                 <div class="form-group" style={{ margin: "0 2rem" }}>
 
                                                     <input type="number"
+                                                        style={{ margin: "0 0", }}
                                                         className="input-number"
                                                         value={item.qty}
                                                         onChange={(e) =>

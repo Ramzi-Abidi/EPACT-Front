@@ -47,7 +47,7 @@ const Header = ({ userInfo }) => {
     <header className="row" color='#333' style={{ width: "100%" }}>
 
       <div className='first'>
-        <div className='img-container' style={{ width: "31.4%" }}>
+        <div className='img-container' style={{ width: "31.2%" }}>
           <img src={Image} onClick={handleClick} />
         </div>
       </div>
