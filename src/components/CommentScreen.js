@@ -122,7 +122,7 @@ const CommentScreen = () => {
                     </h4>
 
                     <div id="collapseOne" class="accordion-collapse collapsing" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style={{ height: "auto" }}>
-                        <div class="accordion-body">
+                        <div class="accordion-body" dir="rtl">
                             {post.postContent}
                         </div>
 

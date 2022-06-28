@@ -43,8 +43,8 @@ export default () => {
                 setLoading(false);
             })
             .catch((err) => {
-                setLoading(false) ;
-                setError(err) ;
+                setLoading(false);
+                setError(err);
                 console.log(err);
             })
     }, []);
@@ -61,11 +61,11 @@ export default () => {
         })
             .then(res => {
                 return res.json();
-            }) 
+            })
             .then(data => {
                 if (data) {
-                   // console.log(data);
-                    swal("done!", "supprimer avec succée", "success");
+                    // console.log(data);
+                    swal("done!", "supprimer avec succès", "success");
                 }
             })
             .catch((err) => {
@@ -91,22 +91,20 @@ export default () => {
                     return (
 
                         <SwiperSlide>
-                            <div class="card border-primary mb-3" style={{ minHeight: "400px" }} key={post._id} >
-                                <div class="card-header" style={{ padding: "1.5rem" }}>
-                                   
-                                    <h4 class="card-title"> <b> {post.title} </b> </h4>
-
+                            <div className="card border-primary mb-3" style={{ minHeight: "400px" }} key={post._id} >
+                                <div className="card-header" style={{ padding: "1.5rem" }}>
+                                    <h4 className="card-title"> <b> {post.title} </b> </h4>
                                 </div>
-                                <div class="card-body">
-                                    <p class="card-text" style={{ marginTop: "1rem" }}> {post.postContent}</p>
+                                <div className="card-body">
+                                    <p dir="rtl" className="card-text" style={{ marginTop: "1rem" }}> {post.postContent}</p>
                                 </div>
                                 <div style={{ margin: "2rem 1rem", display: "flex", justifyContent: "flex-end" }}>
-                                    {/*<button type="button" class="btn btn-outline-info" style={{ marginRight: ".5rem", height: "3rem", fontSize: "15px" }} >Voir tous les commentaires </button>*/}
-                                    <button type="button" class="btn btn-outline-primary" style={{ marginRight: ".5rem", width: "10rem", height: "3rem", fontSize: "15px" }} onClick={() => handleCommentClick(post)}>Commenter</button>
+                                    {/*<button type="button" className="btn btn-outline-info" style={{ marginRight: ".5rem", height: "3rem", fontSize: "15px" }} >Voir tous les commentaires </button>*/}
+                                    <button type="button" className="btn btn-outline-primary" style={{ marginRight: ".5rem", width: "10rem", height: "3rem", fontSize: "15px" }} onClick={() => handleCommentClick(post)}>Commenter</button>
                                     {
                                         localStorage.getItem("userInfo") && JSON.parse(localStorage.getItem("userInfo")).isAdmin &&
                                         <>
-                                            <button type="button" class="btn btn-danger" style={{ width: "10rem", height: "3rem" }} onClick={() => handleDelete(post._id)} >Delete</button>
+                                            <button type="button" className="btn btn-danger" style={{ width: "10rem", height: "3rem" }} onClick={() => handleDelete(post._id)} >Delete</button>
                                         </>
                                     }
 

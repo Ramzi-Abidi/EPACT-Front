@@ -153,7 +153,7 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
             })
             .then(data => {
                 console.log(data);
-                swal("done!", "supprimer avec succée", "success");
+                swal("done!", "supprimer avec succès", "success");
             })
             .catch((err) => {
                 console.log(err);
@@ -172,7 +172,7 @@ const Comment = ({ comment, setComments, comments, textBtn, postId, commentId })
                             {comment.name}
                         </span>
                     </div>
-                    <div style={{ fontSize: "16px", paddingLeft: "3rem", margin: "2rem" }}> <p> {comment.commentContent}  </p> </div>
+                    <div style={{ fontSize: "16px", paddingLeft: "3rem", margin: "2rem" }}> <p > {comment.commentContent}  </p> </div>
                 </div>
                 <div style={{ display: "flex" , flexDirection:"column"}}>
                     <div style={{display:"flex",alignSelf:"flex-end"}}>

@@ -123,7 +123,7 @@ const Signup = (props) => {
             <div className='input-container1'>
               <input type="submit" value="Envoyer" class="btn btn-outline-primary signup" style={{ width: "11rem", height: "40px" }} />
               <div style={{color:"#fff"}}>
-                Vous avez déjà un compte ? <Link to="/signin"> Sign In </Link>
+                Vous avez déjà un compte ? <Link to="/signin"> Se connecter </Link>
               </div>
             </div>
 

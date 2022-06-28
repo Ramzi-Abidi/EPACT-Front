@@ -229,6 +229,9 @@ img.small {
   margin-top: 2rem;
   max-width: 450px;
 }
+p {
+  text-align: justify;
+}
 /* Card */
 .card-product {
   margin: 0 3rem !important;
