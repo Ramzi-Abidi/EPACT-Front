@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import girl from "../images/girl.jpg";
+import siwar from "../images/SIWAR.jpg";
 import AnimatedPage from './AnimatedPage';
 
 const Apropos = () => {
@@ -15,7 +15,7 @@ const Apropos = () => {
       <div class="about-container">
 
         <div class="image-container">
-          <img src={girl} alt="" />
+          <img src={siwar} alt=""  className='siwar'/>
 
         </div>
 
