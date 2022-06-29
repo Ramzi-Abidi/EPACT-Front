@@ -1062,13 +1062,11 @@ i.fa-solid {
   margin-top:2rem;
   padding-top:2rem ;
 }
-
 .tableContainer table {
   margin:4rem auto ;
   border:0;
   outline:0;
 }
-
 .tableContainer table tr td{
   padding:1.2rem ;
 }
@@ -1083,7 +1081,6 @@ i.fa-solid {
     margin-right: 3rem;
   }
 }
-
 @media (max-width:1055px) {
   .background-container {
     margin: 7rem 0;
@@ -1233,6 +1230,8 @@ i.fa-solid {
 }
 /**/
 @media (max-width:992px) {
+
+
   .about-container {
     width: 90%;
     top: 1%;
@@ -1288,6 +1287,9 @@ i.fa-solid {
   }
 }
 @media screen and (max-width: 768px){
+  .checkout-steps {
+    display: none !important;
+  }
   .about-container {
     margin: 1rem 0;
   }
@@ -1353,6 +1355,7 @@ flex-direction: column;
 }
 }
 @media (max-width: 480px) {
+
   .first {
     margin-left: 3rem;
   }
